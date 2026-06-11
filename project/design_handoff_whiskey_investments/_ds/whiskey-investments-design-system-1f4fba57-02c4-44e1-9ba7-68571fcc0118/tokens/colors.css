@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Whiskey Investments — Color tokens
+   Sourced directly from the "Future-Led Thinking" brand board (Concept 2).
+   Base palette + 4-step ramps, then semantic aliases.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand: Teal (primary) ---- */
+  --teal-700: #1f7d80;   /* hover / pressed deep teal */
+  --teal-600: #269497;   /* deep teal */
+  --teal-500: #33b6b1;   /* PRIMARY brand teal */
+  --teal-400: #66c8c5;
+  --teal-300: #99dbd8;
+  --teal-200: #ccedeb;
+  --teal-100: #eef5f3;   /* mint app background */
+  --mint: #62d4c5;       /* bright mint highlight */
+
+  /* ---- Brand: Indigo (accent) ---- */
+  --indigo-600: #4f3ad6; /* hover */
+  --indigo-500: #624def; /* indigo accent */
+  --indigo-400: #897af3;
+  --indigo-300: #b0a6f7;
+  --indigo-200: #d8d2fb;
+
+  /* ---- Brand: Coral (action / energy) ---- */
+  --coral-600: #f25a2b; /* hover */
+  --coral-500: #ff784e; /* coral */
+  --coral-400: #ff9a7a;
+  --coral-300: #ffbba6;
+  --coral-200: #ffddd3;
+
+  /* ---- Ink / Navy (text + dark surfaces) ---- */
+  --navy-900: #1d2e3c;  /* deepest */
+  --navy-800: #283d4f;  /* INK — primary text + dark surface */
+  --navy-700: #355169;
+  --navy-500: #5e6e7b;  /* secondary text */
+  --navy-400: #939ea7;  /* tertiary / disabled text */
+  --navy-300: #c9ced3;  /* hairline on dark */
+
+  /* ---- Neutrals ---- */
+  --white: #ffffff;
+  --paper: #f9f7f4;     /* warm off-white */
+  --surface-tint: #ddebe8; /* pale mint surface */
+  --line: #e2e8e7;      /* default hairline */
+  --line-strong: #c3c3c3;
+  --muted: #8e8e8e;     /* eyebrow label grey */
+
+  /* ---- Semantic: surfaces ---- */
+  --bg-app: var(--teal-100);
+  --bg-canvas: var(--white);
+  --surface-card: var(--white);
+  --surface-raised: var(--white);
+  --surface-sunken: var(--teal-100);
+  --surface-inverse: var(--navy-800);
+
+  /* ---- Semantic: text ---- */
+  --text-strong: var(--navy-800);
+  --text-body: var(--navy-700);
+  --text-muted: var(--navy-500);
+  --text-subtle: var(--navy-400);
+  --text-on-dark: var(--white);
+  --text-on-brand: var(--white);
+  --text-eyebrow: var(--muted);
+
+  /* ---- Semantic: brand roles ---- */
+  --brand: var(--teal-500);
+  --brand-deep: var(--teal-600);
+  --brand-hover: var(--teal-700);
+  --accent: var(--indigo-500);
+  --accent-hover: var(--indigo-600);
+  --action: var(--coral-500);
+  --action-hover: var(--coral-600);
+
+  /* ---- Semantic: lines / focus ---- */
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+  --ring: color-mix(in srgb, var(--teal-500) 45%, transparent);
+
+  /* ---- Status ---- */
+  --success: #269497;
+  --success-bg: #ccedeb;
+  --warning: #ff784e;
+  --warning-bg: #ffddd3;
+  --danger: #e23b2e;
+  --danger-bg: #ffe0dc;
+  --info: #624def;
+  --info-bg: #d8d2fb;
+}

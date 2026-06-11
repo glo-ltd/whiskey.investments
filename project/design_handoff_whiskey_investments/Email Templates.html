@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Templates · whiskey.investments</title>
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/colors.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/typography.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/styles.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--navy-900, #1D2E3C); }
+  .hd { max-width: 1440px; margin: 0 auto; padding: 36px 32px 8px; display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  .hd h1 { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: #fff; margin: 0; }
+  .hd p { font-family: var(--font-body); font-size: 13.5px; color: rgba(255,255,255,.55); margin: 0; }
+  .grid { max-width: 1440px; margin: 0 auto; padding: 20px 32px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+  .panel { display: flex; flex-direction: column; gap: 12px; }
+  .panel-label { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.185em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  iframe { width: 100%; height: 1280px; border: none; border-radius: 16px; background: #EEF5F3; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+</style>
+</head>
+<body>
+  <div class="hd">
+    <h1>Transactional email templates</h1>
+    <p>640px, table-based, inline styles, email-client safe</p>
+  </div>
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-label">1 · Reservation confirmation, to the customer</div>
+      <iframe src="emails/reservation-confirmation.html" title="Reservation confirmation email"></iframe>
+    </div>
+    <div class="panel">
+      <div class="panel-label">2 · Reservation notification, to GND</div>
+      <iframe src="emails/reservation-notification-gnd.html" title="GND notification email"></iframe>
+    </div>
+  </div>
+</body>
+</html>

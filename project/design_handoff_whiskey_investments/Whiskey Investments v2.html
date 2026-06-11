@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whiskey.Investments | The future of whiskey investing</title>
+
+<!-- OpenGraph / social sharing. Replace the og:image URL with the absolute production URL (e.g. https://whiskey.investments/assets/og-image.png) at deploy. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Whiskey.Investments">
+<meta property="og:title" content="Whiskey.Investments | The future of whiskey investing">
+<meta property="og:description" content="Own Irish whiskey casks, made by the distillery itself. Reserve new-make casks from Great Northern Distillery, stored, insured and certified in Ireland.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Whiskey.Investments | The future of whiskey investing">
+<meta name="twitter:description" content="Own Irish whiskey casks, made by the distillery itself. Reserve new-make casks from Great Northern Distillery, stored, insured and certified in Ireland.">
+<meta name="twitter:image" content="assets/og-image.png">
+
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/colors.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/typography.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/styles.css">
+
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font-body); color: var(--text-strong); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4, p, ul { margin: 0; }
+  .wi-ico svg { display: block; }
+  .wi-ico-fill svg { fill: currentColor; }
+
+  /* ---------- Grids ---------- */
+  .wi-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .wi-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .wi-hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .wi-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+  .wi-calc2-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: start; }
+  .wi-cask-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .wi-gnd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .wi-faq-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 56px; align-items: start; }
+  .wi-footer-grid { display: grid; grid-template-columns: 1.6fr 0.8fr 1fr 1.1fr; gap: 40px; }
+  .wi-tier-ladder { display: flex; gap: 10px; flex-wrap: wrap; }
+  .wi-ab2-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .wi-form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ---------- Sliders ---------- */
+  .calc-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 999px; background: var(--surface-tint); outline: none; cursor: pointer; margin: 0; }
+  .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--teal-500); border: 4px solid var(--white); box-shadow: 0 2px 8px rgba(40,61,79,.28); cursor: grab; transition: transform .12s var(--ease-emphasis); }
+  .calc-slider:active::-webkit-slider-thumb { transform: scale(1.12); cursor: grabbing; }
+  .calc-slider::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--teal-500); border: 4px solid var(--white); box-shadow: 0 2px 8px rgba(40,61,79,.28); cursor: grab; }
+  .calc-slider:focus-visible { box-shadow: 0 0 0 4px var(--ring); }
+
+  /* ---------- Button hover interactions ---------- */
+  @media (hover: hover) {
+    button { transition: transform .18s var(--ease-emphasis), box-shadow .22s var(--ease-standard), background .2s var(--ease-standard), filter .2s var(--ease-standard) !important; }
+    button:hover:not(:disabled) { transform: translateY(-1.5px) !important; filter: brightness(1.05); }
+    button:active:not(:disabled) { transform: translateY(0) scale(0.98) !important; filter: brightness(0.97); transition-duration: .08s !important; }
+  }
+  .calc-slider-dark::-webkit-slider-thumb { background: var(--mint); border-color: var(--navy-900); }
+  .calc-slider-dark::-moz-range-thumb { background: var(--mint); border-color: var(--navy-900); }
+
+  /* ---------- Scroll reveal + card hover lift ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .wi-reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s var(--ease-standard), transform .55s var(--ease-standard); transition-delay: var(--reveal-delay, 0s); }
+    .wi-reveal.wi-in { opacity: 1; transform: none; }
+  }
+  @media (hover: hover) {
+    .wi-lift { transition: transform .22s var(--ease-emphasis), box-shadow .25s var(--ease-standard); }
+    .wi-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg) !important; }
+  }
+  .wi-navlink { position: relative; }
+  .wi-navlink::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px; height: 2px; border-radius: 2px; background: var(--teal-500); transform: scaleX(0); transform-origin: left; transition: transform .22s var(--ease-standard); }
+  .wi-navlink:hover::after { transform: scaleX(1); }
+
+  /* ---------- Footer form controls ---------- */
+  .wi-finput { width: 100%; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.04); border-radius: 10px; padding: 11px 13px; font-family: var(--font-body); font-size: 14px; color: #fff; outline: none; }
+  .wi-finput::placeholder { color: rgba(255,255,255,0.45); }
+  .wi-finput:focus { border-color: var(--mint); }
+  .wi-langselect { width: 100%; appearance: none; -webkit-appearance: none; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 38px 11px 13px; font-family: var(--font-body); font-size: 14px; color: #fff; cursor: pointer; outline: none; }
+  .wi-langselect option { color: #1d2e3c; }
+
+  /* ---------- Chatbot / modal ---------- */
+  @keyframes wi-chat-in { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+  .wi-typing { display: inline-flex; gap: 4px; align-items: center; }
+  .wi-typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--navy-300); display: inline-block; animation: wi-bounce 1s infinite ease-in-out; }
+  .wi-typing i:nth-child(2) { animation-delay: .15s; }
+  .wi-typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes wi-bounce { 0%, 80%, 100% { transform: translateY(0); opacity: .5; } 40% { transform: translateY(-5px); opacity: 1; } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1000px) {
+    .wi-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .wi-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .wi-hero-grid, .wi-compare-grid, .wi-calc2-grid, .wi-cask-grid, .wi-gnd-grid, .wi-faq-grid { grid-template-columns: 1fr; gap: 36px; }
+    .wi-hero-copy { padding-bottom: 0 !important; }
+    .wi-hero-media { padding-top: 0 !important; padding-bottom: 56px !important; }
+    .wi-footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .wi-hero-usps { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 720px) {
+    .wi-hero-usps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .wi-navlinks { display: none !important; }
+    .wi-burger { display: inline-flex !important; }
+  }
+  @media (max-width: 560px) {
+    .wi-grid-3, .wi-grid-4, .wi-footer-grid, .wi-form-2col { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- React + Babel (pinned) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Design system bundle -->
+<script src="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/_ds_bundle.js"></script>
+<!-- Lucide icons + image slot -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="image-slot.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="site2/data.jsx"></script>
+  <script type="text/babel" src="site2/header.jsx"></script>
+  <script type="text/babel" src="site2/why.jsx"></script>
+  <script type="text/babel" src="site2/how.jsx"></script>
+  <script type="text/babel" src="site2/calculator2.jsx"></script>
+  <script type="text/babel" src="site2/cask-gnd.jsx"></script>
+  <script type="text/babel" src="site2/trust2.jsx"></script>
+  <script type="text/babel" src="site2/reserve.jsx"></script>
+  <script type="text/babel" src="site2/guide-modal.jsx"></script>
+  <script type="text/babel" src="site2/footer2.jsx"></script>
+  <script type="text/babel" src="site2/app2.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+Whiskey.Investments
+Business model & landing page blueprint
+Prepared for John Parnell · 11 June 2026
+The model in one line. You run a digital reservation storefront for Great Northern Distillery
+whiskey casks. Investors size their order with a calculator and pay a non-refundable 10%
+deposit that is yours to keep as commission. The moment that deposit clears, the order and
+the investor’s details pass straight to GND, who collect the 90% balance and make, store, certify
+and resell the cask. You never touch the balance, never hold stock, and never make a sales
+call.
+1. How the money flows
+The 10% reservation deposit is your margin; everything downstream is the distillery’s
+responsibility. Because the casks are made to order, the deposit is non-refundable — stated
+plainly in your terms and conditions and acknowledged at checkout.
+Stage 	What happens 	Who holds the money
+1. Reserve 	Investor uses the calculator to size their order,
+then completes checkout: all required details
+and passport are collected first, and only then
+is the non-refundable 10% deposit taken.
+You (your
+commission)
+2. Handover 	Once the deposit lands and is matched to its
+order reference, the full order pack and KYC
+are sent to Great Northern Distillery
+automatically.
+—
+3. Balance 	GND invoices and collects the remaining 90%
+directly from the investor, then makes the cask
+to order, stores it, and issues the ownership
+certificate.
+Great Northern
+4. Aftercare 	Storage, insurance, dashboard,
+documentation, resale and buy-back all sit
+with GND. You are not in the loop.
+Great Northern
+Why this is the cleanest version: you are an introducer, not a money-handler. GND collects
+the 90% balance directly, so you never hold investor funds beyond your own commission —
+which sharply reduces your financial-services and client-money exposure.
+2. The one thing you must lock down first
+The entire “hands-off” promise rests on a written Introducer / Commission Agreement with Great
+Northern Distillery (or their cask-sales partner) confirming:
+• Commission ownership — the non-refundable 10% reservation deposit is your retained
+commission and is not owed onward;
+Whiskey.Investments · Business model & landing page blueprint · Page 1
+
+-- 1 of 6 --
+
+• Balance collection — GND invoices and collects the remaining 90% directly from each
+investor;
+• Fulfilment ownership — GND owns make-to-order production, allocation, storage,
+insurance, certificates, the dashboard, resale and buy-back;
+• Data & KYC — GND accepts the order pack and full KYC you collect at checkout, and
+confirms who is data controller for it.
+GND already publishes a “Prestige Cask Sales” programme, so a cask-introducer arrangement
+is squarely within what they do — but it must be in writing before you advertise.
+3. Pricing & your unit economics
+Casks are £2,000 each. They are bought by the crate — one crate is 6 casks (£12,000) — and
+orders rise in whole crates, with a one-crate minimum. Your commission is always 10% of the
+order value.
+Volume discount — the more crates, the bigger the discount
+Recommended method: a tiered crate discount. A single flat percentage is applied to the whole
+order, set by the number of crates ordered. It is easy to understand, trivial to render live in the
+calculator, and visibly rewards larger commitments. (An alternative — marginal discounting,
+where only the crates above each threshold are discounted — is fairer at the margin but harder
+for a first-time buyer to follow, so flat banding is the better front-end choice.)
+Crates 	Casks 	Discount on order 	Price / cask 	Tier name
+1 	6 	— 	£2,000 	Starter
+2 – 4 	12 – 24 	2.5% 	£1,950 	Builder
+5 – 9 	30 – 54 	5% 	£1,900 	Investor
+10 – 19 	60 – 114 	7.5% 	£1,850 	Premium
+20 – 49 	120 – 294 	10% 	£1,800 	Portfolio
+50 + 	300 + 	12.5% 	£1,750 	Founder
+What you earn per order
+Your 10% scales with the discounted order value. A bigger order discounts the per-cask price
+but still pays you far more in absolute commission.
+Crates 	Casks 	Price / cask 	Order value 	Your 10% deposit
+1 	6 	£2,000 	£12,000 	£1,200
+2 	12 	£1,950 	£23,400 	£2,340
+5 	30 	£1,900 	£57,000 	£5,700
+10 	60 	£1,850 	£111,000 	£11,100
+20 	120 	£1,800 	£216,000 	£21,600
+50 	300 	£1,750 	£525,000 	£52,500
+Whiskey.Investments · Business model & landing page blueprint · Page 2
+
+-- 2 of 6 --
+
+Your only running costs: payment processing on the deposit, the website and hosting, a KYC
+tool, the bank/automation connectors, and ad spend. Everything else is margin.
+Note on the discount and your margin: because the discount reduces the whole order value,
+it also trims your 10% slightly. Agree with GND whether the discount comes out of their 90%, is
+shared, or your 10% sits on top of the discounted price — so the tiers above stay profitable for
+you.
+Whiskey.Investments · Business model & landing page blueprint · Page 3
+
+-- 3 of 6 --
+
+4. The landing page
+Proposition
+Lead with the fintech “future of whiskey investing” angle — it should feel like Stripe or
+Revolut, not a whiskey merchant. Headline: “The future of whiskey investing.” Subline: invest
+directly into distillery-backed Irish whiskey casks through the world’s first dedicated whiskey
+investment platform — transparent pricing, verifiable ownership, complete investor control.
+Funnel: calculator, then reserve
+The visitor journey educates first and asks second. The calculator does the persuading; the
+reservation does the converting. One page, anchor navigation, mobile-first.
+# 	Section 	Job it does
+1 	Hero 	“The future of whiskey investing.” Fintech framing, one bold headline,
+trust badges, primary CTA Reserve casks plus secondary Download
+guide.
+2 	Why we exist 	Names the market problem (inflated prices, hidden fees, cold-callers,
+unclear ownership) then positions you as the transparent alternative.
+3 	Why whiskey 	Finite supply, growing global demand, tangible asset,
+recession-resilient. Modern stat cards — every claim disclaimer-safe.
+4 	How it works (6 steps) Choose amount → reserve → verify → documentation → track →
+sell. Removes first-timer anxiety before the calculator.
+5 	Cask calculator 	The centre of gravity. Crate slider (minimum 1 crate / 6 casks, rising
+in crates of 6) updating live: order value, tier discount, saving, 10%
+deposit, estimated future value. Ends in Reserve my allocation.
+6 	Featured investment 	One product — the GND AB2 Irish Malt Cask — not a catalogue.
+Simplicity builds confidence and keeps fulfilment uniform.
+7 	Great Northern
+Distillery
+Trust transfer: Ireland’s largest independent distillery,
+ex-Cooley/Kilbeggan founders, 500k casks in bond. Their credibility
+becomes yours.
+8 	Trust & proof 	Verifiable ownership, 5-year insured storage, buy-back support,
+Trustpilot/testimonials, and the mandatory ASA/CAP risk disclaimers.
+9 	FAQ + final CTA 	Accordion answering ownership, storage, resale, risk, tax. Closes on
+Reserve casks with the non-refundable deposit explained plainly.
+Primary CTA everywhere: Reserve casks (pay the 10% deposit). Secondary CTA: Download
+the investment guide (captures the email of anyone not ready to reserve yet).
+5. Automation — watching deposits land without lifting a finger
+Your only recurring job is confirming that deposits arrive and forwarding paid orders to GND.
+That can be fully automated with a bank connector and a daily scheduled task:
+Whiskey.Investments · Business model & landing page blueprint · Page 4
+
+-- 4 of 6 --
+
+1. Capture — Checkout collects every required detail plus the passport, assigns a unique
+order reference, and takes the non-refundable 10% deposit. The investor pays using that
+reference.
+2. Read the bank — A daily scheduled task queries your bank/payment connector for new
+incoming transactions and reads each payment reference.
+3. Match — Each reference is matched to its open order in your records to confirm the
+deposit has cleared.
+4. Notify GND — For every newly-paid order, the task automatically sends GND the full
+order pack and KYC, then marks the order “handed over” so it is never sent twice.
+5. Daily digest — You receive a short daily digest of deposits received and orders forwarded
+— read-only, no action needed.
+Feasibility: this is buildable now. A GoCardless bank/payments connector is already available
+to read incoming payments by date, and scheduled tasks can run the daily
+reconciliation-and-notify routine. Once your checkout and order reference scheme exist, I can
+set up the daily task for you.
+6. Risks & compliance — read before you advertise
+Advertising rules (ASA / CAP)
+You are the advertiser, so the advertising liability is yours even though GND fulfils. Every page
+and ad must state that the value of investments can go down as well as up, that whiskey cask
+investment is not regulated in the UK, and must avoid guaranteeing returns or implying risk-free
+/ early-retirement outcomes. Keep these disclaimers visible above the fold, not buried.
+Non-refundable deposit
+Because casks are made to order, the 10% deposit is non-refundable — set this out clearly in
+the terms and conditions and require an explicit tick-box acknowledgement at checkout, before
+payment. Have a lawyer confirm the wording works alongside UK consumer-contract rules so
+the non-refundable term is enforceable.
+KYC / AML & data
+You collect a passport and full investor details at checkout, before the deposit, which makes you
+a data controller for that data and potentially in scope for anti-money-laundering checks.
+Confirm in the GND agreement who owns the KYC obligation, store documents securely, and
+keep your privacy policy and GDPR basis tight.
+Note: I’m not a lawyer or financial adviser. The points above flag where you need professional
+advice before launch — they aren’t legal or financial advice themselves.
+7. 30-day launch checklist (design & dev)
+1. Design the one-page site in the fintech style: hero → why we exist → why whiskey → how
+it works → calculator → featured cask → GND → trust → FAQ → final CTA.
+2. Build the responsive, mobile-first front end with sticky anchor navigation and the two CTAs
+(Reserve casks / Download guide).
+Whiskey.Investments · Business model & landing page blueprint · Page 5
+
+-- 5 of 6 --
+
+3. Build the interactive cask calculator: crate slider (1-crate minimum, steps of 6 casks), live
+order value, tiered discount, saving, 10% deposit and estimated future value, updating
+without page refresh.
+4. Build the checkout flow: collect all investor details and passport upload first, assign a
+unique order reference, add the compliance and non-refundable-deposit tick-boxes, then
+take the 10% deposit.
+5. Integrate the deposit payment method and the KYC verification tool.
+6. Build the daily bank-reconciliation task: read the bank connector, match payment
+references to orders, and auto-send the order pack to GND.
+7. Add disclaimers, T&Cs (including the non-refundable deposit) and privacy policy, then QA
+across devices and ship.
+Source — Great Northern Distillery: gndireland.com
+Whiskey.Investments · Business model & landing page blueprint · Page 6
+
+-- 6 of 6 --
+

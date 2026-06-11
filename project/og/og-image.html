@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OG Image · Whiskey.Investments</title>
+<link rel="stylesheet" href="../_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/fonts.css">
+<link rel="stylesheet" href="../_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/colors.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body { background: var(--navy-900, #1D2E3C); position: relative; font-family: "Poppins", sans-serif; }
+  #art { position: absolute; top: 0; left: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--navy-900, #1D2E3C); transform-origin: top left; }
+
+  /* Subtle brand geometry: faceted angles echoing the cask mark */
+  .facet { position: absolute; }
+  .facet-1 { right: -160px; top: -160px; width: 560px; height: 560px; background: var(--teal-500, #33B6B1); opacity: .10; transform: rotate(24deg); border-radius: 90px; }
+  .facet-2 { right: -40px; bottom: -260px; width: 460px; height: 460px; background: var(--indigo-500, #624DEF); opacity: .08; transform: rotate(-18deg); border-radius: 80px; }
+  .facet-3 { right: 150px; top: 170px; width: 280px; height: 280px; background: var(--mint, #62D4C5); opacity: .10; transform: rotate(40deg); border-radius: 56px; }
+
+  .inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+  .logo { width: 560px; height: auto; display: block; }
+</style>
+</head>
+<body>
+<div id="art">
+  <div class="facet facet-1"></div>
+  <div class="facet facet-2"></div>
+  <div class="facet facet-3"></div>
+
+  <div class="inner">
+    <img class="logo" src="../assets/wi-logo-og.svg" alt="whiskey.investments">
+  </div>
+</div>
+<script>
+  (function () {
+    var art = document.getElementById("art");
+    function fit() {
+      var s = Math.min(window.innerWidth / 1200, window.innerHeight / 630);
+      art.style.transform = "scale(" + s + ")";
+    }
+    window.addEventListener("resize", fit);
+    fit();
+  })();
+</script>
+</body>
+</html>

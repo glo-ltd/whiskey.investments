@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whiskey ROI Calculator</title>
+
+<!-- Design system tokens + styles -->
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/colors.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/typography.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/styles.css">
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text-strong);
+    background: var(--bg-app);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* faint brand mark watermark */
+  #bg-mark {
+    position: fixed;
+    right: -120px;
+    bottom: -140px;
+    width: 520px;
+    height: 520px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #root { position: relative; z-index: 1; width: 100%; display: flex; justify-content: center; }
+
+  /* ---- Slider styling (driven by --calc-accent) ---- */
+  .calc-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-tint);
+    outline: none;
+    cursor: pointer;
+    margin: 0;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--calc-accent, var(--brand));
+    border: 4px solid var(--white);
+    box-shadow: 0 2px 8px rgba(40,61,79,0.28);
+    cursor: grab;
+    transition: transform var(--dur-fast) var(--ease-emphasis);
+  }
+  .calc-slider:active::-webkit-slider-thumb { cursor: grabbing; transform: scale(1.12); }
+  .calc-slider::-moz-range-thumb {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--calc-accent, var(--brand));
+    border: 4px solid var(--white);
+    box-shadow: 0 2px 8px rgba(40,61,79,0.28);
+    cursor: grab;
+  }
+  .calc-slider:focus-visible { box-shadow: 0 0 0 4px var(--ring); }
+
+  @keyframes calc-pop { 0% { transform: scale(0.96); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+  /* ---------- Button hover interactions ---------- */
+  @media (hover: hover) {
+    button { transition: transform .18s var(--ease-emphasis), box-shadow .22s var(--ease-standard), background .2s var(--ease-standard), filter .2s var(--ease-standard) !important; }
+    button:hover:not(:disabled) { transform: translateY(-1.5px) !important; filter: brightness(1.05); }
+    button:active:not(:disabled) { transform: translateY(0) scale(0.98) !important; filter: brightness(0.97); transition-duration: .08s !important; }
+  }
+</style>
+
+<!-- React + Babel (pinned) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Design system bundle (plain JS) -->
+<script src="_ds/whiskey-investments-design-system-1f4fba57-02c4-44e1-9ba7-68571fcc0118/_ds_bundle.js"></script>
+</head>
+<body>
+  <img id="bg-mark" src="assets/logo-mark.svg" alt="">
+  <div id="root"></div>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="calculator.jsx"></script>
+</body>
+</html>

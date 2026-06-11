@@ -1,0 +1,10 @@
+/* ==========================================================================
+   Whiskey Investments — Fonts
+   Poppins (display / UI) + Roboto (eyebrow labels).
+   Both are EXACT matches to the source Figma — loaded from Google Fonts CDN.
+   NOTE: fonts are CDN-linked, not self-hosted. If you need offline/bundled
+   binaries, drop the .woff2 files in assets/fonts/ and swap these @imports
+   for local @font-face rules.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');

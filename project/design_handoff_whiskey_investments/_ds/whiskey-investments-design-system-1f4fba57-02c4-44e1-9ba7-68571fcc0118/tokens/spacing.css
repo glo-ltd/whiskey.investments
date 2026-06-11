@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Whiskey Investments — Spacing, radii, shadows, motion
+   8pt base grid. Soft, modern fintech surfaces: generous radii, low-spread
+   tinted shadows, no harsh borders.
+   ========================================================================== */
+
+:root {
+  /* ---- Spacing (8pt grid) ---- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---- Radii ---- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;   /* default card / input */
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Borders ---- */
+  --border-width: 1px;
+  --border-width-strong: 1.5px;
+
+  /* ---- Shadows (cool, teal-tinted, soft) ---- */
+  --shadow-xs: 0 1px 2px rgba(40, 61, 79, 0.06);
+  --shadow-sm: 0 2px 8px rgba(40, 61, 79, 0.08);
+  --shadow-md: 0 8px 24px rgba(40, 61, 79, 0.10);
+  --shadow-lg: 0 18px 48px rgba(40, 61, 79, 0.14);
+  --shadow-brand: 0 10px 28px rgba(51, 182, 177, 0.30);
+  --shadow-action: 0 10px 28px rgba(255, 120, 78, 0.32);
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-emphasis: cubic-bezier(0.34, 1.3, 0.64, 1); /* @kind other */
+  --dur-fast: 120ms; /* @kind other */
+  --dur-base: 200ms; /* @kind other */
+  --dur-slow: 320ms; /* @kind other */
+
+  /* ---- Layout ---- */
+  --container-max: 1200px; /* @kind spacing */
+  --container-pad: 24px; /* @kind spacing */
+}
