@@ -66,8 +66,11 @@ export default function FeaturedCask() {
         {/* Featured cask image */}
         <div style={{ position: 'relative' }}>
           <img
-            src="/assets/cask-warehouse.jpg"
+            src="/assets/cask-warehouse.webp"
             alt="GND bonded warehouse — AB2 Irish Single Malt casks in bond"
+            width={1120}
+            height={747}
+            loading="lazy"
             style={{
               width: '100%',
               height: '460px',

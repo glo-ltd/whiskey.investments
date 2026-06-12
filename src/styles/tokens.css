@@ -5,7 +5,7 @@
 
 :root {
   /* ---- Brand: Teal (primary) ---- */
-  --teal-700: #1f7d80;
+  --teal-700: #17686b;
   --teal-600: #269497;
   --teal-500: #33b6b1;
   --teal-400: #66c8c5;
@@ -22,7 +22,7 @@
   --indigo-200: #d8d2fb;
 
   /* ---- Brand: Coral (action / energy) ---- */
-  --coral-600: #f25a2b;
+  --coral-600: #c64514;
   --coral-500: #ff784e;
   --coral-400: #ff9a7a;
   --coral-300: #ffbba6;
@@ -33,7 +33,7 @@
   --navy-800: #283d4f;
   --navy-700: #355169;
   --navy-500: #5e6e7b;
-  --navy-400: #939ea7;
+  --navy-400: #61707b;
   --navy-300: #c9ced3;
 
   /* ---- Neutrals ---- */
@@ -42,7 +42,7 @@
   --surface-tint: #ddebe8;
   --line: #e2e8e7;
   --line-strong: #c3c3c3;
-  --muted: #8e8e8e;
+  --muted: #6e6e6e;
 
   /* ---- Semantic: surfaces ---- */
   --bg-app: var(--teal-100);

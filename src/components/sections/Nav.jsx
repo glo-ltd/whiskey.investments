@@ -138,6 +138,8 @@ export default function Nav() {
             <img
               src="/assets/wi-logo.svg"
               alt="whiskey.investments"
+              width={125}
+              height={40}
               style={{ height: 40, width: 'auto', display: 'block' }}
             />
           </a>

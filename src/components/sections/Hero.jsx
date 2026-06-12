@@ -32,11 +32,15 @@ export default function Hero() {
       <img
         src="/assets/logo-mark.svg"
         alt=""
+        width={520}
+        height={637}
+        fetchpriority="high"
         style={{
           position: 'absolute',
           right: '-150px',
           top: '-60px',
           width: 520,
+          height: 'auto',
           opacity: 0.07,
           pointerEvents: 'none',
         }}

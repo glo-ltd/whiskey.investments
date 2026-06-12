@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home.jsx';
-import Privacy from './pages/legal/Privacy.jsx';
-import Terms from './pages/legal/Terms.jsx';
-import DepositPolicy from './pages/legal/DepositPolicy.jsx';
+
+const Privacy = lazy(() => import('./pages/legal/Privacy.jsx'));
+const Terms = lazy(() => import('./pages/legal/Terms.jsx'));
+const DepositPolicy = lazy(() => import('./pages/legal/DepositPolicy.jsx'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -17,13 +18,15 @@ export default function App() {
   return (
     <>
     <ScrollToTop />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/legal/privacy" element={<Privacy />} />
-      <Route path="/legal/terms" element={<Terms />} />
-      <Route path="/legal/deposit-policy" element={<DepositPolicy />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/legal/privacy" element={<Privacy />} />
+        <Route path="/legal/terms" element={<Terms />} />
+        <Route path="/legal/deposit-policy" element={<DepositPolicy />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
     </>
   );
 }

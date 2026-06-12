@@ -1,12 +1,12 @@
 const VARIANT_STYLES = {
   primary: {
     background: 'var(--teal-500)',
-    color: '#fff',
+    color: 'var(--navy-900)',
     border: 'none',
   },
   action: {
     background: 'var(--coral-500)',
-    color: '#fff',
+    color: 'var(--navy-900)',
     border: 'none',
   },
   secondary: {
@@ -17,7 +17,7 @@ const VARIANT_STYLES = {
   outline: {
     background: 'transparent',
     border: '1.5px solid var(--teal-500)',
-    color: 'var(--teal-600)',
+    color: 'var(--teal-700)',
   },
   dark: {
     background: 'rgba(255,255,255,0.12)',

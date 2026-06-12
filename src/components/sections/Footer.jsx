@@ -13,6 +13,8 @@ export default function Footer() {
             <img
               src="/assets/wi-logo-white.svg"
               alt="whiskey.investments"
+              width={150}
+              height={48}
               style={{ height: 48, width: 'auto', display: 'block' }}
             />
             <p
@@ -78,7 +80,7 @@ export default function Footer() {
                 fontSize: 12,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,.45)',
+                color: 'rgba(255,255,255,.58)',
                 marginBottom: 18,
               }}
             >
@@ -113,7 +115,7 @@ export default function Footer() {
                 fontSize: 12,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,.45)',
+                color: 'rgba(255,255,255,.58)',
                 marginBottom: 18,
               }}
             >
@@ -160,7 +162,7 @@ export default function Footer() {
                 fontSize: 12,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,.45)',
+                color: 'rgba(255,255,255,.58)',
                 marginBottom: 18,
               }}
             >
