@@ -340,7 +340,7 @@ export default {
       'Who collects the other 90%?',
       'How does the crate discount work?',
     ],
-    notConfigured: 'The assistant is not configured. Please set the VITE_CLAUDE_API_KEY environment variable to enable AI responses.',
+    rateLimited: "You've asked a lot of questions — give it a minute and try again, or use the enquiry form in the footer.",
     emptyReply: "Sorry, I couldn't reach the knowledge base just now. Please try again in a moment.",
     connectionError: "I'm having trouble connecting right now. Please use the enquiry form in the footer and we'll be in touch.",
   },

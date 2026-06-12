@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Icon from '../primitives/Icon.jsx';
-import { CHAT_CONTEXT2 } from '../../data/index.js';
+import { matchFaq } from '../../data/faqMatcher.js';
 import { useLang, LANG_OPTIONS } from '../../i18n/index.jsx';
 
 export default function Chatbot() {
@@ -8,7 +8,6 @@ export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
-  // The greeting is rendered virtually so it follows the selected language
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef(null);
   const greeting = { role: 'assistant', content: t.chat.greeting };
@@ -28,67 +27,49 @@ export default function Chatbot() {
   const send = async (override) => {
     const text = (typeof override === 'string' ? override : input).trim();
     if (!text || busy) return;
+
     const next = [...messages, { role: 'user', content: text }];
-    const convoWithGreeting = [greeting, ...next];
     setMessages(next);
     setInput('');
     setBusy(true);
+
+    // Try local FAQ matcher first — zero API cost
+    const faqAnswer = matchFaq(text);
+    if (faqAnswer) {
+      await new Promise(r => setTimeout(r, 400 + Math.random() * 300));
+      setMessages(m => [...m, { role: 'assistant', content: faqAnswer }]);
+      setBusy(false);
+      return;
+    }
+
+    // Fall back to Claude via Netlify function
     try {
-      const apiKey = import.meta.env.VITE_CLAUDE_API_KEY;
-      if (!apiKey) {
-        setMessages((m) => [
-          ...m,
-          { role: 'assistant', content: t.chat.notConfigured },
-        ]);
-        setBusy(false);
-        return;
-      }
+      const langLabel = (LANG_OPTIONS.find(l => l.code === code) || LANG_OPTIONS[0]).label;
+      const langNote = code !== 'en' ? ` (Please reply in ${langLabel}.)` : '';
 
-      const langLabel = (LANG_OPTIONS.find((l) => l.code === code) || LANG_OPTIONS[0]).label;
-      const langNote = code === 'en' ? '' : `\n\nIMPORTANT: The user is browsing the site in ${langLabel}. Reply in ${langLabel}.`;
-      const apiMessages = [
-        {
-          role: 'user',
-          content: CHAT_CONTEXT2 + langNote + '\n\nConversation so far:\n' + convoWithGreeting.map((m) => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`).join('\n') + '\n\nReply as the assistant to the last user message. Do not prefix with "Assistant:".',
-        },
-      ];
+      const apiMessages = next.slice(-6).map((m, i, arr) => ({
+        role: m.role,
+        content: m.role === 'user' && i === arr.length - 1
+          ? m.content + langNote
+          : m.content,
+      }));
 
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true',
-        },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 512,
-          messages: apiMessages,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: apiMessages }),
       });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+      if (res.status === 429) {
+        setMessages(m => [...m, { role: 'assistant', content: t.chat.rateLimited }]);
+        return;
       }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      const data = await response.json();
-      const reply = data.content?.[0]?.text?.trim() || '';
-      setMessages((m) => [
-        ...m,
-        {
-          role: 'assistant',
-          content: reply || t.chat.emptyReply,
-        },
-      ]);
-    } catch (e) {
-      setMessages((m) => [
-        ...m,
-        {
-          role: 'assistant',
-          content: t.chat.connectionError,
-        },
-      ]);
+      const { reply } = await res.json();
+      setMessages(m => [...m, { role: 'assistant', content: reply || t.chat.emptyReply }]);
+    } catch {
+      setMessages(m => [...m, { role: 'assistant', content: t.chat.connectionError }]);
     } finally {
       setBusy(false);
     }
