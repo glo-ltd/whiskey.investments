@@ -1,6 +1,6 @@
 import Icon from './Icon.jsx';
 
-export default function Input({ label, placeholder, icon, onChange, value }) {
+export default function Input({ label, placeholder, icon, onChange, value, autoComplete, type = 'text' }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
       {label && (
@@ -28,10 +28,11 @@ export default function Input({ label, placeholder, icon, onChange, value }) {
           </span>
         )}
         <input
-          type="text"
+          type={type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          autoComplete={autoComplete}
           style={{
             width: '100%',
             border: '1px solid var(--line)',

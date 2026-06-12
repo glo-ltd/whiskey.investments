@@ -188,6 +188,7 @@ export default function GuideModal() {
                 <Input
                   label={t.guide.firstName}
                   placeholder={t.guide.firstPlaceholder}
+                  autoComplete="given-name"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, first: e.target.value }))
                   }
@@ -195,6 +196,7 @@ export default function GuideModal() {
                 <Input
                   label={t.guide.lastName}
                   placeholder={t.guide.lastPlaceholder}
+                  autoComplete="family-name"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, last: e.target.value }))
                   }
@@ -203,7 +205,9 @@ export default function GuideModal() {
               <Input
                 label={t.guide.email}
                 icon="mail"
+                type="email"
                 placeholder={t.guide.emailPlaceholder}
+                autoComplete="email"
                 onChange={(e) =>
                   setForm((f) => ({ ...f, email: e.target.value }))
                 }
@@ -211,7 +215,9 @@ export default function GuideModal() {
               <Input
                 label={t.guide.phone}
                 icon="phone"
+                type="tel"
                 placeholder={t.guide.phonePlaceholder}
+                autoComplete="tel"
                 onChange={(e) =>
                   setForm((f) => ({ ...f, phone: e.target.value }))
                 }

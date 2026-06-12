@@ -1,4 +1,4 @@
-export default function Select({ label, options = [], onChange, defaultValue }) {
+export default function Select({ label, options = [], onChange, defaultValue, autoComplete }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
       {label && (
@@ -14,6 +14,7 @@ export default function Select({ label, options = [], onChange, defaultValue }) 
       <select
         defaultValue={defaultValue}
         onChange={onChange}
+        autoComplete={autoComplete}
         style={{
           width: '100%',
           border: '1px solid var(--line)',

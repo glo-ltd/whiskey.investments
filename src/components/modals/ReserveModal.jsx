@@ -348,6 +348,7 @@ export default function ReserveModal() {
                 <Input
                   label={t.reserve.firstName}
                   placeholder={t.reserve.passportPlaceholder}
+                  autoComplete="given-name"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, first: e.target.value }))
                   }
@@ -355,6 +356,7 @@ export default function ReserveModal() {
                 <Input
                   label={t.reserve.lastName}
                   placeholder={t.reserve.passportPlaceholder}
+                  autoComplete="family-name"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, last: e.target.value }))
                   }
@@ -364,6 +366,8 @@ export default function ReserveModal() {
                 <Input
                   label={t.reserve.email}
                   placeholder={t.reserve.emailPlaceholder}
+                  type="email"
+                  autoComplete="email"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, email: e.target.value }))
                   }
@@ -371,6 +375,8 @@ export default function ReserveModal() {
                 <Input
                   label={t.reserve.phone}
                   placeholder={t.reserve.phonePlaceholder}
+                  type="tel"
+                  autoComplete="tel"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, phone: e.target.value }))
                   }
@@ -379,6 +385,7 @@ export default function ReserveModal() {
               <Input
                 label={t.reserve.billingAddress}
                 placeholder={t.reserve.addressPlaceholder}
+                autoComplete="street-address"
                 onChange={(e) =>
                   setForm((f) => ({ ...f, address1: e.target.value }))
                 }
@@ -387,6 +394,7 @@ export default function ReserveModal() {
                 <Input
                   label={t.reserve.city}
                   placeholder={t.reserve.cityPlaceholder}
+                  autoComplete="address-level2"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, city: e.target.value }))
                   }
@@ -394,12 +402,13 @@ export default function ReserveModal() {
                 <Input
                   label={t.reserve.postcode}
                   placeholder={t.reserve.postcodePlaceholder}
+                  autoComplete="postal-code"
                   onChange={(e) =>
                     setForm((f) => ({ ...f, postcode: e.target.value }))
                   }
                 />
               </div>
-              <Select label={t.reserve.country} options={t.reserve.countries} />
+              <Select label={t.reserve.country} options={t.reserve.countries} autoComplete="country-name" />
 
               {/* Passport upload */}
               <div>
