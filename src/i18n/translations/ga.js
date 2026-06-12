@@ -340,8 +340,9 @@ export default {
       'Cé a bhailíonn an 90% eile?',
       'Conas a oibríonn lascaine na gcliathbhoscaí?',
     ],
-    notConfigured: 'Níl an cúntóir cumraithe. Socraigh an athróg timpeallachta VITE_CLAUDE_API_KEY chun freagraí AI a chumasú.',
+    notConfigured: 'Níl an cúntóir ar fáil faoi láthair. Íoslódáil an treoir infheisteoirí sa bhuntásc le haghaidh gach sonraí.',
+    rateLimited: 'Tá go leor ceisteanna curtha agat — fan nóiméad agus déan iarracht arís, nó íoslódáil an treoir infheisteoirí sa bhuntásc.',
     emptyReply: 'Ár leithscéal, níorbh fhéidir an bunachar eolais a shroicheadh faoi láthair. Bain triail eile as ar ball beag.',
-    connectionError: 'Tá deacracht agam ceangal a dhéanamh faoi láthair. Bain úsáid as an bhfoirm fhiosrúcháin sa bhuntásc agus beimid i dteagmháil leat.',
+    connectionError: 'Tá deacracht agam ceangal a dhéanamh faoi láthair. Íoslódáil an treoir infheisteoirí sa bhuntásc le haghaidh gach sonraí.',
   },
 };

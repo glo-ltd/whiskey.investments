@@ -64,7 +64,12 @@ export default function Chatbot() {
         setMessages(m => [...m, { role: 'assistant', content: t.chat.rateLimited }]);
         return;
       }
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({}));
+        const msg = error === 'not_configured' ? t.chat.notConfigured : t.chat.connectionError;
+        setMessages(m => [...m, { role: 'assistant', content: msg }]);
+        return;
+      }
 
       const { reply } = await res.json();
       setMessages(m => [...m, { role: 'assistant', content: reply || t.chat.emptyReply }]);

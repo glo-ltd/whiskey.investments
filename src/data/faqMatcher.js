@@ -23,6 +23,10 @@ const RULES = [
     answer: () => 'Casks are £2,000 each, sold by the crate of 6 (£12,000 list). The minimum order is 5 crates (30 casks). Volume discounts run from 5% at 5–9 crates up to 15% at 60–100 crates — the calculator on the page shows your live price as you adjust.',
   },
   {
+    re: /\b(discount|tier|tiered|crate discount|volume|bulk|how does.*crate|crate.*work)\b/,
+    answer: () => "Volume discounts are applied to your whole order based on how many crates you buy. Investor (5–9 crates) saves 5%; Collector (10–19) saves 7.5%; Portfolio (20–39) saves 10%; Reserve (40–59) saves 12.5%; Founder (60–100) saves 15%. The discount is off the £2,000 list price per cask. The calculator shows your exact price live as you adjust.",
+  },
+  {
     re: /\b(deposit|refund|refundable|non.?refundable|10.?%)\b/,
     answer: () => FAQS2[1]?.a,
   },

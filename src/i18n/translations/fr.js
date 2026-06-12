@@ -340,8 +340,9 @@ export default {
       'Qui encaisse les 90 % restants ?',
       'Comment fonctionne la remise par caisse ?',
     ],
-    notConfigured: 'L’assistant n’est pas configuré. Veuillez définir la variable d’environnement VITE_CLAUDE_API_KEY pour activer les réponses de l’IA.',
-    emptyReply: 'Désolé, je n’ai pas pu joindre la base de connaissances pour le moment. Veuillez réessayer dans un instant.',
-    connectionError: 'Je rencontre actuellement des difficultés de connexion. Veuillez utiliser le formulaire de contact en bas de page et nous vous répondrons.',
+    notConfigured: "L’assistant n’est pas disponible pour le moment. Téléchargez le guide de l’investisseur en bas de page pour tous les détails.",
+    rateLimited: "Vous avez posé beaucoup de questions — attendez un instant et réessayez, ou téléchargez le guide de l’investisseur en bas de page.",
+    emptyReply: "Désolé, je n'ai pas pu joindre la base de connaissances pour le moment. Veuillez réessayer dans un instant.",
+    connectionError: "Je rencontre actuellement des difficultés de connexion. Téléchargez le guide de l’investisseur en bas de page pour tous les détails.",
   },
 };

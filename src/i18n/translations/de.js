@@ -340,8 +340,9 @@ export default {
       'Wer zieht die übrigen 90 % ein?',
       'Wie funktioniert der Kistenrabatt?',
     ],
-    notConfigured: 'Der Assistent ist nicht konfiguriert. Bitte setzen Sie die Umgebungsvariable VITE_CLAUDE_API_KEY, um KI-Antworten zu aktivieren.',
+    notConfigured: 'Der Assistent ist momentan nicht verfügbar. Laden Sie den Investorenguide im Footer herunter, um alle Details zu erhalten.',
+    rateLimited: 'Sie haben viele Fragen gestellt — warten Sie kurz und versuchen Sie es erneut, oder laden Sie den Investorenguide im Footer herunter.',
     emptyReply: 'Entschuldigung, ich konnte die Wissensdatenbank gerade nicht erreichen. Bitte versuchen Sie es gleich noch einmal.',
-    connectionError: 'Ich habe momentan Verbindungsprobleme. Bitte nutzen Sie das Anfrageformular im Footer – wir melden uns bei Ihnen.',
+    connectionError: 'Ich habe momentan Verbindungsprobleme. Laden Sie den Investorenguide im Footer herunter, um alle Details zu erhalten.',
   },
 };

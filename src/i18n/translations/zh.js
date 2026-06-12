@@ -340,8 +340,9 @@ export default {
       '剩余的 90% 由谁收取？',
       '整箱折扣是如何运作的？',
     ],
-    notConfigured: '智能助手尚未配置。请设置 VITE_CLAUDE_API_KEY 环境变量以启用 AI 回复。',
+    notConfigured: '智能助手暂时不可用。请下载页面底部的投资者指南获取详细信息。',
+    rateLimited: '您提问太频繁了——请稍等片刻再试，或下载页面底部的投资者指南获取详细信息。',
     emptyReply: '抱歉，暂时无法连接知识库，请稍后再试。',
-    connectionError: '当前连接出现问题。请使用页面底部的咨询表单，我们会与您联系。',
+    connectionError: '当前连接出现问题。请下载页面底部的投资者指南获取详细信息。',
   },
 };

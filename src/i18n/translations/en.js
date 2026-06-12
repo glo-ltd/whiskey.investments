@@ -340,8 +340,9 @@ export default {
       'Who collects the other 90%?',
       'How does the crate discount work?',
     ],
-    rateLimited: "You've asked a lot of questions — give it a minute and try again, or use the enquiry form in the footer.",
+    notConfigured: "The assistant isn't available right now. Download the investor guide in the footer for full details, or come back shortly.",
+    rateLimited: "You've asked a lot of questions — give it a minute and try again, or download the investor guide in the footer for full details.",
     emptyReply: "Sorry, I couldn't reach the knowledge base just now. Please try again in a moment.",
-    connectionError: "I'm having trouble connecting right now. Please use the enquiry form in the footer and we'll be in touch.",
+    connectionError: "I'm having trouble connecting right now. Download the investor guide in the footer for full details.",
   },
 };

@@ -340,8 +340,9 @@ export default {
       'Chi incassa il restante 90%?',
       'Come funziona lo sconto sulle casse?',
     ],
-    notConfigured: 'L’assistente non è configurato. Imposti la variabile d’ambiente VITE_CLAUDE_API_KEY per abilitare le risposte AI.',
-    emptyReply: 'Spiacente, al momento non riesco a raggiungere la base di conoscenza. La preghiamo di riprovare tra qualche istante.',
-    connectionError: 'Sto riscontrando problemi di connessione. Utilizzi il modulo di contatto nel piè di pagina e la ricontatteremo.',
+    notConfigured: "L’assistente non è disponibile al momento. Scarichi la guida per gli investitori nel footer per tutti i dettagli.",
+    rateLimited: "Ha posto molte domande — aspetti un momento e riprovi, oppure scarichi la guida per gli investitori nel footer.",
+    emptyReply: "Spiacente, al momento non riesco a raggiungere la base di conoscenza. La preghiamo di riprovare tra qualche istante.",
+    connectionError: "Sto riscontrando problemi di connessione. Scarichi la guida per gli investitori nel footer per tutti i dettagli.",
   },
 };

@@ -340,8 +340,9 @@ export default {
       '¿Quién cobra el 90% restante?',
       '¿Cómo funciona el descuento por cajas?',
     ],
-    notConfigured: 'El asistente no está configurado. Configure la variable de entorno VITE_CLAUDE_API_KEY para habilitar las respuestas de IA.',
+    notConfigured: 'El asistente no está disponible ahora mismo. Descargue la guía del inversor en el pie de página para obtener todos los detalles.',
+    rateLimited: 'Ha hecho muchas preguntas — espere un momento e inténtelo de nuevo, o descargue la guía del inversor en el pie de página.',
     emptyReply: 'Lo sentimos, no he podido acceder a la base de conocimientos en este momento. Inténtelo de nuevo en unos instantes.',
-    connectionError: 'Estoy teniendo problemas de conexión en este momento. Utilice el formulario de consulta en el pie de página y nos pondremos en contacto con usted.',
+    connectionError: 'Estoy teniendo problemas de conexión ahora mismo. Descargue la guía del inversor en el pie de página para obtener todos los detalles.',
   },
 };
