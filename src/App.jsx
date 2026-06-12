@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Privacy from './pages/legal/Privacy.jsx';
 import Terms from './pages/legal/Terms.jsx';
@@ -22,6 +22,7 @@ export default function App() {
       <Route path="/legal/privacy" element={<Privacy />} />
       <Route path="/legal/terms" element={<Terms />} />
       <Route path="/legal/deposit-policy" element={<DepositPolicy />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
     </>
   );
