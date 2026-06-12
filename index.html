@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Whiskey.Investments | The future of whiskey investing</title>
+  <title>Whiskey.Investments | Irish Whiskey Cask Investment</title>
+  <meta name="description" content="Reserve AB2 Irish Single Malt whiskey casks from Great Northern Distillery from £2,000. Second-fill, bonded and insured in Ireland. 10% deposit, distillery certificate included." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whiskey.investments/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Whiskey.Investments" />
-  <meta property="og:title" content="Whiskey.Investments | The future of whiskey investing" />
-  <meta property="og:description" content="Own Irish whiskey casks, made by the distillery itself. Reserve new-make casks from Great Northern Distillery, stored, insured and certified in Ireland." />
-  <meta property="og:image" content="/assets/og-image.png" />
+  <meta property="og:url" content="https://whiskey.investments/" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Whiskey.Investments | Irish Whiskey Cask Investment" />
+  <meta property="og:description" content="Reserve AB2 Irish Single Malt casks from Great Northern Distillery from £2,000. Bonded storage, insurance and distillery ownership certificate included." />
+  <meta property="og:image" content="https://whiskey.investments/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Whiskey.Investments | The future of whiskey investing" />
-  <meta name="twitter:description" content="Own Irish whiskey casks, made by the distillery itself. Reserve new-make casks from Great Northern Distillery, stored, insured and certified in Ireland." />
-  <meta name="twitter:image" content="/assets/og-image.png" />
+  <meta name="twitter:title" content="Whiskey.Investments | Irish Whiskey Cask Investment" />
+  <meta name="twitter:description" content="Reserve AB2 Irish Single Malt casks from Great Northern Distillery from £2,000. Bonded storage, insurance and distillery ownership certificate included." />
+  <meta name="twitter:image" content="https://whiskey.investments/assets/og-image.png" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -23,6 +28,102 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#33b6b1" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://whiskey.investments/#organization",
+        "name": "Whiskey.Investments",
+        "url": "https://whiskey.investments",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://whiskey.investments/assets/wi-logo.svg"
+        },
+        "description": "Digital reservation platform for Great Northern Distillery AB2 Irish Single Malt whiskey casks. Own, store and resell casks with full distillery provenance.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "33 N Gould St",
+          "addressLocality": "Sheridan",
+          "addressRegion": "WY",
+          "postalCode": "82801",
+          "addressCountry": "US"
+        },
+        "sameAs": ["https://www.gndireland.com"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://whiskey.investments/#website",
+        "name": "Whiskey.Investments",
+        "url": "https://whiskey.investments",
+        "publisher": { "@id": "https://whiskey.investments/#organization" }
+      },
+      {
+        "@type": "Product",
+        "name": "AB2 Irish Single Malt Whiskey Cask",
+        "description": "Second-fill AB2 Irish Single Malt whiskey cask from Great Northern Distillery. Sold by the crate of 6 (£12,000). Includes 5-year bonded storage, insurance, unique cask ID and distillery-issued ownership certificate.",
+        "image": "https://whiskey.investments/assets/cask-warehouse.jpg",
+        "brand": { "@type": "Brand", "name": "Great Northern Distillery" },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Great Northern Distillery",
+          "url": "https://www.gndireland.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "2000.00",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": "https://whiskey.investments/",
+          "priceValidUntil": "2027-12-31",
+          "seller": { "@id": "https://whiskey.investments/#organization" }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I actually own the casks?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your casks are made to order by Great Northern Distillery and held in a bonded warehouse with a unique cask ID. You receive an ownership certificate issued by the distillery once the balance is settled." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the 10% deposit non-refundable?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Because every cask is made to order, with production scheduled against your reservation. This is stated plainly in our terms and you acknowledge it explicitly at checkout, before any payment is taken." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who collects the remaining 90%?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Great Northern Distillery invoices and collects the balance directly from you. We never hold it. The distillery then makes, stores, insures and certifies your casks." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are my casks stored, and are they insured?",
+            "acceptedAnswer": { "@type": "Answer", "text": "In the distillery's bonded warehousing, with five years of insured storage included. Storage, insurance and documentation all sit with Great Northern Distillery." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I sell?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The distillery offers resale support for matured casks. Timescales and prices depend on the market at the time. There is no guaranteed exit price." }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the risks?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The value of whiskey casks can go down as well as up, and past performance is not a guide to future returns. Whiskey cask investment is not regulated in the UK, so there is no FSCS protection or FOS recourse. Never invest more than you can afford to lose." }
+          },
+          {
+            "@type": "Question",
+            "name": "What about tax?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Whiskey casks held in bond may have favourable tax treatment in some circumstances, but tax depends on your personal situation and jurisdiction. Take independent advice, we don't provide tax, legal or financial advice." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

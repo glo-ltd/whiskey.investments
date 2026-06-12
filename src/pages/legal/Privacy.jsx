@@ -1,8 +1,14 @@
+import { Helmet } from 'react-helmet-async';
 import LegalLayout from './LegalLayout.jsx';
 
 export default function Privacy() {
   return (
-    <LegalLayout title="Privacy Policy" updated="Last updated: 12 June 2026">
+    <>
+      <Helmet>
+        <title>Privacy Policy | Whiskey.Investments</title>
+        <meta name="description" content="Privacy policy for Whiskey.Investments. Learn how GRO AI LLC collects, uses and protects your personal data when you reserve whiskey casks." />
+      </Helmet>
+      <LegalLayout title="Privacy Policy" updated="Last updated: 12 June 2026">
       <h2>1. Who we are</h2>
       <p>Whiskey.Investments is a trading name of <strong>GRO AI LLC</strong> ("we", "us", "our"). We operate this website as an introducer for whiskey cask sales fulfilled by Great Northern Distillery Limited ("GND").</p>
       <div className="lg-address">GRO AI LLC<br />33 N Gould St<br />Sheridan, WY 82801<br />United States</div>
@@ -65,5 +71,6 @@ export default function Privacy() {
       <h2>13. Contact</h2>
       <p>Questions about this policy or your data can be sent to GRO AI LLC at the address in section 1.</p>
     </LegalLayout>
+    </>
   );
 }

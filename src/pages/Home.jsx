@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Nav from '../components/sections/Nav.jsx';
 import Hero from '../components/sections/Hero.jsx';
 import WhyWeExist from '../components/sections/WhyWeExist.jsx';
@@ -62,6 +63,10 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Whiskey.Investments | Irish Whiskey Cask Investment</title>
+        <meta name="description" content="Reserve AB2 Irish Single Malt whiskey casks from Great Northern Distillery from £2,000. Second-fill, bonded and insured in Ireland. 10% deposit, distillery certificate included." />
+      </Helmet>
       <Nav />
       <main>
         <Hero />

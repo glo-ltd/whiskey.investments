@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import LegalLayout from './LegalLayout.jsx';
 
 export default function Terms() {
   return (
-    <LegalLayout title="Terms &amp; Conditions" updated="Last updated: 12 June 2026">
+    <>
+      <Helmet>
+        <title>Terms &amp; Conditions | Whiskey.Investments</title>
+        <meta name="description" content="Terms and conditions for Whiskey.Investments. Understand your rights and obligations when reserving AB2 Irish Single Malt whiskey casks." />
+      </Helmet>
+      <LegalLayout title="Terms &amp; Conditions" updated="Last updated: 12 June 2026">
       <div className="lg-callout">
         <p><strong>In short:</strong> we are an introducer, not the seller. Your cask purchase contract is with Great Northern Distillery Limited. We provide information, not advice. Whiskey cask investment is unregulated and your capital is at risk. Our liability is limited to the deposit we actually received from you.</p>
       </div>
@@ -72,5 +78,6 @@ export default function Terms() {
       <h2>15. Contact</h2>
       <p>Questions about these terms can be sent to GRO AI LLC at the address in section 1. Questions about your cask purchase, invoice, storage or certificates should go to GND using the contact details in section 2.</p>
     </LegalLayout>
+    </>
   );
 }

@@ -1,8 +1,14 @@
+import { Helmet } from 'react-helmet-async';
 import LegalLayout from './LegalLayout.jsx';
 
 export default function DepositPolicy() {
   return (
-    <LegalLayout title="Non-Refundable Deposit Policy" updated="Last updated: 12 June 2026">
+    <>
+      <Helmet>
+        <title>Deposit Policy | Whiskey.Investments</title>
+        <meta name="description" content="Non-refundable deposit policy for Whiskey.Investments. Understand why the 10% reservation deposit on AB2 Irish Single Malt casks is non-refundable." />
+      </Helmet>
+      <LegalLayout title="Non-Refundable Deposit Policy" updated="Last updated: 12 June 2026">
       <div className="lg-callout">
         <p><strong>In short:</strong> the 10% reservation deposit is non-refundable in all circumstances except those listed in section 6. You acknowledge this at checkout, before paying. Please do not reserve casks unless you are certain.</p>
       </div>
@@ -43,5 +49,6 @@ export default function DepositPolicy() {
       <h2>9. Your statutory rights</h2>
       <p>Nothing in this policy affects statutory rights that cannot be excluded or limited under the law of your country of residence.</p>
     </LegalLayout>
+    </>
   );
 }
