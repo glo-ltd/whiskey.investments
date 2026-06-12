@@ -63,26 +63,20 @@ export default function FeaturedCask() {
   return (
     <Section id="cask" bg="white">
       <div className="wi-cask-grid">
-        {/* Image slot placeholder */}
+        {/* Featured cask image */}
         <div style={{ position: 'relative' }}>
-          <div
+          <img
+            src="/assets/cask-warehouse.jpg"
+            alt="GND bonded warehouse — AB2 Irish Single Malt casks in bond"
             style={{
               width: '100%',
               height: '460px',
-              boxShadow: 'var(--shadow-lg)',
-              background: 'var(--teal-100)',
+              objectFit: 'cover',
               borderRadius: 24,
-              border: '2px dashed var(--teal-300)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--teal-400)',
-              fontFamily: 'var(--font-body)',
-              fontSize: 14,
+              boxShadow: 'var(--shadow-lg)',
+              display: 'block',
             }}
-          >
-            Drop the AB2 cask photo
-          </div>
+          />
           <div style={{ position: 'absolute', top: 18, left: 18 }}>
             <Badge tone="action">Featured investment</Badge>
           </div>
