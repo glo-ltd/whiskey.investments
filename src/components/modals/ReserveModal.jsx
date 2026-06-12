@@ -495,7 +495,7 @@ export default function ReserveModal() {
                     <span>
                       I understand the 10% reservation deposit is non-refundable, because my casks are made to order, and I agree to the{' '}
                       <a
-                        href="#/legal/terms"
+                        href="/legal/terms"
                         target="_blank"
                         rel="noopener"
                         onClick={(e) => e.stopPropagation()}

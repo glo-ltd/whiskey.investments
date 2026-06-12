@@ -255,13 +255,13 @@ export default function Footer() {
             </div>
             <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
               {[
-                ['Privacy', '#/legal/privacy'],
-                ['Terms & conditions', '#/legal/terms'],
-                ['Non-refundable deposit policy', '#/legal/deposit-policy'],
-              ].map(([l, href]) => (
-                <a
+                ['Privacy', '/legal/privacy'],
+                ['Terms & conditions', '/legal/terms'],
+                ['Non-refundable deposit policy', '/legal/deposit-policy'],
+              ].map(([l, to]) => (
+                <Link
                   key={l}
-                  href={href}
+                  to={to}
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontSize: 12.5,
@@ -272,7 +272,7 @@ export default function Footer() {
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,.5)')}
                 >
                   {l}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
