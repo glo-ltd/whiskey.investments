@@ -3,8 +3,10 @@ import Section from '../layout/Section.jsx';
 import Eyebrow from '../layout/Eyebrow.jsx';
 import Icon from '../primitives/Icon.jsx';
 import Button from '../primitives/Button.jsx';
+import { useT } from '../../i18n/index.jsx';
 
 function GndVideo() {
+  const t = useT();
   const [playing, setPlaying] = useState(false);
   const vidRef = useRef(null);
 
@@ -48,7 +50,7 @@ function GndVideo() {
       {!playing ? (
         <button
           onClick={start}
-          aria-label="Play the GND story video"
+          aria-label={t.distillery.videoAria}
           style={{
             position: 'absolute',
             inset: 0,
@@ -97,7 +99,7 @@ function GndVideo() {
                 letterSpacing: '-0.01em',
               }}
             >
-              Watch the GND story
+              {t.distillery.videoTitle}
             </span>
             <span
               style={{
@@ -106,7 +108,7 @@ function GndVideo() {
                 color: 'rgba(255,255,255,.65)',
               }}
             >
-              Inside Ireland's largest independent distillery · 2 min
+              {t.distillery.videoSub}
             </span>
           </span>
         </button>
@@ -115,21 +117,13 @@ function GndVideo() {
   );
 }
 
-const stats = [
-  { value: 'No. 1', label: "Ireland's largest independent distillery" },
-  {
-    value: 'Cooley & Kilbeggan',
-    label: "Founded by the team behind two of Ireland's great whiskey houses",
-  },
-  { value: '500,000+', label: 'Casks maturing in bonded warehouses' },
-];
-
 export default function Distillery() {
+  const t = useT();
   return (
     <Section bg="teal" pad="88px 24px">
       <div className="wi-gnd-grid">
         <div>
-          <Eyebrow color="rgba(255,255,255,.7)">Fulfilled by</Eyebrow>
+          <Eyebrow color="rgba(255,255,255,.7)">{t.distillery.eyebrow}</Eyebrow>
           <h2
             style={{
               fontFamily: 'var(--font-display)',
@@ -141,7 +135,7 @@ export default function Distillery() {
               margin: '14px 0 0',
             }}
           >
-            Backed by Great Northern Distillery
+            {t.distillery.title}
           </h2>
           <p
             style={{
@@ -153,13 +147,13 @@ export default function Distillery() {
               maxWidth: 480,
             }}
           >
-            Your casks are made, stored, insured, certified and resold by the distillery itself, not a middleman. Their scale and track record become your security.
+            {t.distillery.intro}
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, margin: '28px 0 30px' }}>
-            {stats.map((s) => (
+            {t.distillery.stats.map((s) => (
               <div
-                key={s.label}
+                key={s.value}
                 style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}
               >
                 <span
@@ -207,7 +201,7 @@ export default function Distillery() {
               window.open('https://www.gndireland.com/history', '_blank', 'noopener')
             }
           >
-            The GND Story
+            {t.distillery.cta}
           </Button>
         </div>
 

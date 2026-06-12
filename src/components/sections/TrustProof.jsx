@@ -2,50 +2,25 @@ import Section from '../layout/Section.jsx';
 import SectionHead from '../layout/SectionHead.jsx';
 import Icon from '../primitives/Icon.jsx';
 import Card from '../primitives/Card.jsx';
+import { useT } from '../../i18n/index.jsx';
 
-const proofs = [
-  {
-    icon: 'badge-check',
-    title: 'Verifiable ownership',
-    body: 'A unique cask ID and a distillery-issued certificate for every cask, checkable, traceable, yours.',
-  },
-  {
-    icon: 'warehouse',
-    title: '5-year insured storage',
-    body: 'Bonded warehousing with insurance included for five years, with fire, theft and damage covered.',
-  },
-  {
-    icon: 'handshake',
-    title: 'Resale support',
-    body: "Exit through the distillery's resale support. GND supplies 60% of all Irish labels worldwide.",
-  },
-];
-
-const reviews = [
-  {
-    quote: 'Clear pricing, no phone calls, and the certificate arrived exactly as described.',
-    who: 'Verified investor · 5 crates',
-  },
-  {
-    quote: "The calculator told me everything before I paid a penny. That's how it should work.",
-    who: 'Verified investor · 10 crates',
-  },
-];
+const PROOF_ICONS = ['badge-check', 'warehouse', 'handshake'];
 
 export default function TrustProof() {
+  const t = useT();
   return (
     <Section bg="white">
       <SectionHead
-        eyebrow="Trust & proof"
-        title="Built to be checked"
-        intro="Everything we claim is verifiable, on your certificate, in the bonded warehouse records, and with the distillery itself."
+        eyebrow={t.trust.eyebrow}
+        title={t.trust.title}
+        intro={t.trust.intro}
         align="center"
       />
 
       <div className="wi-grid-3" style={{ marginTop: 52 }}>
-        {proofs.map((p) => (
+        {PROOF_ICONS.map((icon, i) => (
           <Card
-            key={p.title}
+            key={icon}
             variant="default"
             padding="28px"
             className="wi-lift"
@@ -63,7 +38,7 @@ export default function TrustProof() {
                 marginBottom: 18,
               }}
             >
-              <Icon name={p.icon} size={25} color="var(--teal-600)" strokeWidth={1.9} />
+              <Icon name={icon} size={25} color="var(--teal-600)" strokeWidth={1.9} />
             </span>
             <h3
               style={{
@@ -74,7 +49,7 @@ export default function TrustProof() {
                 margin: '0 0 9px',
               }}
             >
-              {p.title}
+              {t.trust.proofs[i].title}
             </h3>
             <p
               style={{
@@ -85,7 +60,7 @@ export default function TrustProof() {
                 margin: 0,
               }}
             >
-              {p.body}
+              {t.trust.proofs[i].body}
             </p>
           </Card>
         ))}
@@ -93,7 +68,7 @@ export default function TrustProof() {
 
       {/* Reviews */}
       <div className="wi-compare-grid" style={{ marginTop: 24 }}>
-        {reviews.map((r) => (
+        {t.trust.reviews.map((r) => (
           <div
             key={r.who}
             className="wi-lift"
@@ -162,7 +137,7 @@ export default function TrustProof() {
               marginBottom: 6,
             }}
           >
-            Understand the risks before you reserve
+            {t.trust.riskTitle}
           </div>
           <p
             style={{
@@ -173,7 +148,7 @@ export default function TrustProof() {
               margin: 0,
             }}
           >
-            The value of whiskey casks can go down as well as up, and past performance is not a guide to future returns. Whiskey cask investment is not regulated in the UK, so there is no FSCS protection or FOS recourse. Returns are not guaranteed, exits depend on market demand, and the 10% reservation deposit is non-refundable because casks are made to order. Never invest more than you can afford to lose.
+            {t.trust.riskBody}
           </p>
         </div>
       </div>

@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import Icon from '../primitives/Icon.jsx';
 import Button from '../primitives/Button.jsx';
 import Input from '../primitives/Input.jsx';
+import { useT, fmt } from '../../i18n/index.jsx';
 
 export default function GuideModal() {
+  const t = useT();
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ first: '', last: '', email: '', phone: '' });
@@ -47,7 +49,7 @@ export default function GuideModal() {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Download the investment guide"
+        aria-label={t.guide.ariaLabel}
         style={{
           width: 'min(460px, 100%)',
           maxHeight: 'min(86vh, 680px)',
@@ -94,7 +96,7 @@ export default function GuideModal() {
                   color: 'var(--text-strong)',
                 }}
               >
-                {sent ? 'Guide on its way' : 'Download the guide'}
+                {sent ? t.guide.titleDone : t.guide.titleOpen}
               </div>
               <div
                 style={{
@@ -103,13 +105,13 @@ export default function GuideModal() {
                   color: 'var(--text-subtle)',
                 }}
               >
-                {sent ? 'Check your inbox' : 'Everything on this page, in your inbox'}
+                {sent ? t.guide.subDone : t.guide.subOpen}
               </div>
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            aria-label="Close"
+            aria-label={t.guide.close}
             style={{
               width: 34,
               height: 34,
@@ -163,8 +165,7 @@ export default function GuideModal() {
                   maxWidth: 320,
                 }}
               >
-                Thanks {form.first.trim()}. The investment guide is on its way to{' '}
-                <strong>{form.email}</strong>.
+                {fmt(t.guide.successBody, { name: form.first.trim(), email: form.email })}
               </p>
               <Button
                 variant="primary"
@@ -172,7 +173,7 @@ export default function GuideModal() {
                 onClick={() => setOpen(false)}
                 style={{ marginTop: 8 }}
               >
-                Done
+                {t.guide.done}
               </Button>
             </div>
           ) : (
@@ -185,32 +186,32 @@ export default function GuideModal() {
             >
               <div className="wi-form-2col">
                 <Input
-                  label="First name"
-                  placeholder="Alex"
+                  label={t.guide.firstName}
+                  placeholder={t.guide.firstPlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, first: e.target.value }))
                   }
                 />
                 <Input
-                  label="Last name"
-                  placeholder="Murphy"
+                  label={t.guide.lastName}
+                  placeholder={t.guide.lastPlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, last: e.target.value }))
                   }
                 />
               </div>
               <Input
-                label="Email"
+                label={t.guide.email}
                 icon="mail"
-                placeholder="you@example.com"
+                placeholder={t.guide.emailPlaceholder}
                 onChange={(e) =>
                   setForm((f) => ({ ...f, email: e.target.value }))
                 }
               />
               <Input
-                label="Phone number"
+                label={t.guide.phone}
                 icon="phone"
-                placeholder="+44…"
+                placeholder={t.guide.phonePlaceholder}
                 onChange={(e) =>
                   setForm((f) => ({ ...f, phone: e.target.value }))
                 }
@@ -224,7 +225,7 @@ export default function GuideModal() {
                 type="submit"
                 style={{ marginTop: 4 }}
               >
-                Send me the guide
+                {t.guide.cta}
               </Button>
               <p
                 style={{
@@ -236,7 +237,7 @@ export default function GuideModal() {
                   textAlign: 'center',
                 }}
               >
-                We'll only use your details to send the guide and follow up about your enquiry. No spam, unsubscribe any time.
+                {t.guide.privacyNote}
               </p>
             </form>
           )}

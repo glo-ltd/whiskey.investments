@@ -6,6 +6,7 @@ import Button from '../primitives/Button.jsx';
 import Badge from '../primitives/Badge.jsx';
 import Card from '../primitives/Card.jsx';
 import { priceOrder, TIERS2, GROWTH_RATE, CASK_PRICE, fmtGBP } from '../../data/index.js';
+import { useT, fmt } from '../../i18n/index.jsx';
 
 function useCountUp(target, dur = 450) {
   const [val, setVal] = useState(target);
@@ -31,6 +32,7 @@ function useCountUp(target, dur = 450) {
 }
 
 export default function Calculator() {
+  const t = useT();
   const [crates, setCrates] = useState(5);
   const [years, setYears] = useState(8);
 
@@ -51,7 +53,7 @@ export default function Calculator() {
   return (
     <Section id="calculator" bg="navyDeep">
       <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
-        <Eyebrow color="rgba(255,255,255,.55)">Cask calculator</Eyebrow>
+        <Eyebrow color="rgba(255,255,255,.55)">{t.calculator.eyebrow}</Eyebrow>
         <h2
           style={{
             fontFamily: 'var(--font-display)',
@@ -63,7 +65,7 @@ export default function Calculator() {
             color: '#fff',
           }}
         >
-          Size your order. Watch the price fall.
+          {t.calculator.title}
         </h2>
         <p
           style={{
@@ -75,7 +77,7 @@ export default function Calculator() {
             maxWidth: 600,
           }}
         >
-          Casks are {fmtGBP(CASK_PRICE)} each, sold by the crate of six. The more crates you reserve, the bigger the discount on your whole order.
+          {fmt(t.calculator.intro, { price: fmtGBP(CASK_PRICE) })}
         </p>
       </div>
 
@@ -107,7 +109,7 @@ export default function Calculator() {
                   color: 'rgba(255,255,255,.65)',
                 }}
               >
-                Your order
+                {t.calculator.yourOrder}
               </span>
               <span
                 style={{
@@ -118,11 +120,11 @@ export default function Calculator() {
                   color: '#fff',
                 }}
               >
-                {crates} crate{crates === 1 ? '' : 's'}{' '}
+                {crates} {crates === 1 ? t.calculator.crate_one : t.calculator.crate_other}{' '}
                 <span
                   style={{ fontSize: 16, fontWeight: 500, color: 'var(--mint)' }}
                 >
-                  = {o.casks} casks
+                  {fmt(t.calculator.casksEquals, { n: o.casks })}
                 </span>
               </span>
             </div>
@@ -151,8 +153,8 @@ export default function Calculator() {
                 marginTop: 10,
               }}
             >
-              <span>5 crates · 30 casks</span>
-              <span>100 crates · 600 casks</span>
+              <span>{t.calculator.sliderMin}</span>
+              <span>{t.calculator.sliderMax}</span>
             </div>
           </div>
 
@@ -167,15 +169,15 @@ export default function Calculator() {
                 marginBottom: 12,
               }}
             >
-              Volume discount tiers
+              {t.calculator.tiersLabel}
             </div>
             <div className="wi-tier-ladder">
-              {TIERS2.map((t) => {
-                const active = o.tier.name === t.name;
+              {TIERS2.map((tier) => {
+                const active = o.tier.name === tier.name;
                 return (
                   <button
-                    key={t.name}
-                    onClick={() => setCrates(t.min)}
+                    key={tier.name}
+                    onClick={() => setCrates(tier.min)}
                     style={{
                       flex: 1,
                       minWidth: 88,
@@ -200,7 +202,7 @@ export default function Calculator() {
                         color: active ? 'var(--mint)' : 'rgba(255,255,255,.75)',
                       }}
                     >
-                      {t.name}
+                      {t.tiers[tier.name] || tier.name}
                     </div>
                     <div
                       style={{
@@ -212,9 +214,9 @@ export default function Calculator() {
                         marginTop: 3,
                       }}
                     >
-                      {t.disc === 0
-                        ? 'list price'
-                        : `−${(t.disc * 100).toFixed(1).replace('.0', '')}%`}
+                      {tier.disc === 0
+                        ? t.calculator.listPrice
+                        : `−${(tier.disc * 100).toFixed(1).replace('.0', '')}%`}
                     </div>
                     <div
                       style={{
@@ -224,11 +226,11 @@ export default function Calculator() {
                         marginTop: 2,
                       }}
                     >
-                      {t.max === 100
-                        ? `${t.min}–100 crates`
-                        : t.min === t.max
-                        ? `${t.min} crate`
-                        : `${t.min}–${t.max} crates`}
+                      {tier.max === 100
+                        ? fmt(t.calculator.crateRangeMax, { min: tier.min })
+                        : tier.min === tier.max
+                        ? fmt(t.calculator.crateSingle, { n: tier.min })
+                        : fmt(t.calculator.crateRange, { min: tier.min, max: tier.max })}
                     </div>
                   </button>
                 );
@@ -261,7 +263,7 @@ export default function Calculator() {
                   color: 'rgba(255,255,255,.65)',
                 }}
               >
-                Holding period (for the estimate)
+                {t.calculator.holdingPeriod}
               </span>
               <span
                 style={{
@@ -271,7 +273,7 @@ export default function Calculator() {
                   color: '#fff',
                 }}
               >
-                {years} years
+                {fmt(t.calculator.years, { n: years })}
               </span>
             </div>
             <input
@@ -299,11 +301,11 @@ export default function Calculator() {
                 marginTop: 10,
               }}
             >
-              <span>5 yrs</span>
+              <span>{t.calculator.yrsMin}</span>
               <span style={{ color: 'var(--mint)' }}>
-                Irish malt sweet spot: 5–8 yrs
+                {t.calculator.sweetSpot}
               </span>
-              <span>8 yrs</span>
+              <span>{t.calculator.yrsMax}</span>
             </div>
           </div>
         </div>
@@ -336,10 +338,10 @@ export default function Calculator() {
                 color: 'var(--text-strong)',
               }}
             >
-              Your reservation
+              {t.calculator.yourReservation}
             </div>
             <Badge tone="brand" dot>
-              {o.tier.name} tier
+              {fmt(t.calculator.tierBadge, { tier: t.tiers[o.tier.name] || o.tier.name })}
               {o.tier.disc
                 ? ` · −${(o.tier.disc * 100).toFixed(1).replace('.0', '')}%`
                 : ''}
@@ -348,12 +350,12 @@ export default function Calculator() {
 
           <div style={{ padding: '18px 26px 4px' }}>
             {[
-              ['Casks', `${o.casks} (${crates} × 6)`],
-              ['Price per cask', o.tier.disc ? null : fmtGBP(CASK_PRICE)],
-              ['Order value', fmtGBP(Math.round(aOrder))],
-              ['You save', o.saving > 0 ? fmtGBP(o.saving) : '£0'],
+              [t.calculator.casksRow, fmt(t.calculator.casksDetail, { casks: o.casks, crates })],
+              [t.calculator.pricePerCask, o.tier.disc ? null : fmtGBP(CASK_PRICE)],
+              [t.calculator.orderValue, fmtGBP(Math.round(aOrder))],
+              [t.calculator.youSave, o.saving > 0 ? fmtGBP(o.saving) : '£0'],
             ].map(([k, v]) =>
-              k === 'Price per cask' && v === null ? (
+              k === t.calculator.pricePerCask && v === null ? (
                 <div
                   key={k}
                   style={{
@@ -418,7 +420,7 @@ export default function Calculator() {
                       fontWeight: 600,
                       fontSize: 15,
                       color:
-                        k === 'You save' && o.saving > 0
+                        k === t.calculator.youSave && o.saving > 0
                           ? 'var(--teal-600)'
                           : 'var(--text-strong)',
                     }}
@@ -446,7 +448,7 @@ export default function Calculator() {
                     color: 'var(--text-strong)',
                   }}
                 >
-                  Deposit due today (10%)
+                  {t.calculator.depositDue}
                 </div>
                 <div
                   style={{
@@ -456,7 +458,7 @@ export default function Calculator() {
                     marginTop: 2,
                   }}
                 >
-                  Non-refundable, casks are made to order
+                  {t.calculator.depositNote}
                 </div>
               </div>
               <div
@@ -492,7 +494,7 @@ export default function Calculator() {
                   color: 'var(--text-muted)',
                 }}
               >
-                Est. value in {years} years
+                {fmt(t.calculator.estValueIn, { n: years })}
                 <span style={{ color: 'var(--text-subtle)' }}>*</span>
               </div>
               <div
@@ -517,7 +519,7 @@ export default function Calculator() {
                 padding: '4px 0 10px',
               }}
             >
-              Balance of {fmtGBP(o.balance)} is invoiced and collected directly by Great Northern Distillery.
+              {fmt(t.calculator.balanceNote, { balance: fmtGBP(o.balance) })}
             </div>
           </div>
 
@@ -529,7 +531,7 @@ export default function Calculator() {
               iconRight={<Icon name="arrow-right" size={18} />}
               onClick={reserve}
             >
-              Reserve my allocation
+              {t.calculator.cta}
             </Button>
             <p
               style={{
@@ -541,7 +543,7 @@ export default function Calculator() {
                 textAlign: 'center',
               }}
             >
-              *Illustration only, based on the Knight Frank Wealth Report 2024 (whisky +280% over the 10 years to 2023, ~14.3% p.a. annualised). Past performance is not a guide to future returns; values can go down as well as up. Not regulated in the UK. Not advice.
+              {t.calculator.disclaimer}
             </p>
           </div>
         </Card>

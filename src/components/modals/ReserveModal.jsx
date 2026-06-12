@@ -6,8 +6,10 @@ import Input from '../primitives/Input.jsx';
 import Select from '../primitives/Select.jsx';
 import Checkbox from '../primitives/Checkbox.jsx';
 import { priceOrder, fmtGBP } from '../../data/index.js';
+import { useT, fmt } from '../../i18n/index.jsx';
 
 export default function ReserveModal() {
+  const t = useT();
   const [open, setOpen] = useState(false);
   const [crates, setCrates] = useState(5);
   const [paid, setPaid] = useState(false);
@@ -58,7 +60,7 @@ export default function ReserveModal() {
   const stepBtn = (dir) => (
     <button
       onClick={() => setCrates((c) => Math.max(1, Math.min(60, c + dir)))}
-      aria-label={dir > 0 ? 'Add a crate' : 'Remove a crate'}
+      aria-label={dir > 0 ? t.reserve.addCrate : t.reserve.removeCrate}
       style={{
         width: 38,
         height: 38,
@@ -137,7 +139,7 @@ export default function ReserveModal() {
                   color: 'var(--text-strong)',
                 }}
               >
-                {paid ? 'Reservation confirmed' : 'Reserve your casks'}
+                {paid ? t.reserve.titleDone : t.reserve.titleOpen}
               </div>
               <div
                 style={{
@@ -146,13 +148,13 @@ export default function ReserveModal() {
                   color: 'var(--text-subtle)',
                 }}
               >
-                Order reference · {orderRef}
+                {t.reserve.orderRef} · {orderRef}
               </div>
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            aria-label="Close"
+            aria-label={t.reserve.close}
             style={{
               background: 'transparent',
               border: 'none',
@@ -191,7 +193,7 @@ export default function ReserveModal() {
                   margin: '0 0 8px',
                 }}
               >
-                Deposit received, {fmtGBP(o.deposit)}
+                {fmt(t.reserve.successTitle, { amount: fmtGBP(o.deposit) })}
               </h3>
               <p
                 style={{
@@ -203,7 +205,7 @@ export default function ReserveModal() {
                   maxWidth: 380,
                 }}
               >
-                {o.casks} casks reserved under reference <strong>{orderRef}</strong>. A confirmation email is on its way to {form.email || 'you'}.
+                {fmt(t.reserve.successBody, { casks: o.casks, ref: orderRef, email: form.email || t.reserve.successYou })}
               </p>
             </div>
             <div
@@ -222,12 +224,12 @@ export default function ReserveModal() {
                   marginBottom: 14,
                 }}
               >
-                What happens next
+                {t.reserve.nextTitle}
               </div>
               {[
-                ['send', 'Your order pack and verification details go straight to Great Northern Distillery.'],
-                ['receipt', `GND invoices and collects the balance of ${fmtGBP(o.balance)} directly from you.`],
-                ['award', 'Your casks are made to order, stored in bond, and certified with unique cask IDs.'],
+                ['send', t.reserve.nextSteps[0]],
+                ['receipt', fmt(t.reserve.nextSteps[1], { balance: fmtGBP(o.balance) })],
+                ['award', t.reserve.nextSteps[2]],
               ].map(([ic, tx]) => (
                 <div
                   key={ic}
@@ -249,7 +251,7 @@ export default function ReserveModal() {
             </div>
             <div style={{ marginTop: 20 }}>
               <Button variant="primary" size="md" block onClick={() => setOpen(false)}>
-                Done
+                {t.reserve.done}
               </Button>
             </div>
           </div>
@@ -285,7 +287,7 @@ export default function ReserveModal() {
                       textAlign: 'center',
                     }}
                   >
-                    {crates} crate{crates === 1 ? '' : 's'} · {o.casks} casks
+                    {crates} {crates === 1 ? t.reserve.crate_one : t.reserve.crate_other} · {o.casks} {t.reserve.casks}
                   </span>
                   {stepBtn(1)}
                 </div>
@@ -307,7 +309,7 @@ export default function ReserveModal() {
                   borderBottom: '1px solid rgba(40,61,79,.08)',
                 }}
               >
-                <span>Order value ({fmtGBP(o.tier.perCask)} / cask)</span>
+                <span>{fmt(t.reserve.orderValuePerCask, { price: fmtGBP(o.tier.perCask) })}</span>
                 <span
                   style={{ fontWeight: 600, color: 'var(--text-strong)' }}
                 >
@@ -325,7 +327,7 @@ export default function ReserveModal() {
                 }}
               >
                 <span style={{ fontWeight: 600, color: 'var(--text-strong)' }}>
-                  Deposit due today (10%)
+                  {t.reserve.depositDue}
                 </span>
                 <span
                   style={{
@@ -344,15 +346,15 @@ export default function ReserveModal() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div className="wi-form-2col">
                 <Input
-                  label="First name"
-                  placeholder="As it appears on your passport"
+                  label={t.reserve.firstName}
+                  placeholder={t.reserve.passportPlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, first: e.target.value }))
                   }
                 />
                 <Input
-                  label="Last name"
-                  placeholder="As it appears on your passport"
+                  label={t.reserve.lastName}
+                  placeholder={t.reserve.passportPlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, last: e.target.value }))
                   }
@@ -360,58 +362,44 @@ export default function ReserveModal() {
               </div>
               <div className="wi-form-2col">
                 <Input
-                  label="Email"
-                  placeholder="you@example.com"
+                  label={t.reserve.email}
+                  placeholder={t.reserve.emailPlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, email: e.target.value }))
                   }
                 />
                 <Input
-                  label="Phone"
-                  placeholder="+44…"
+                  label={t.reserve.phone}
+                  placeholder={t.reserve.phonePlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, phone: e.target.value }))
                   }
                 />
               </div>
               <Input
-                label="Billing address"
-                placeholder="Street address"
+                label={t.reserve.billingAddress}
+                placeholder={t.reserve.addressPlaceholder}
                 onChange={(e) =>
                   setForm((f) => ({ ...f, address1: e.target.value }))
                 }
               />
               <div className="wi-form-2col">
                 <Input
-                  label="Town / city"
-                  placeholder="London"
+                  label={t.reserve.city}
+                  placeholder={t.reserve.cityPlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, city: e.target.value }))
                   }
                 />
                 <Input
-                  label="Postcode / ZIP"
-                  placeholder="SW1A 1AA"
+                  label={t.reserve.postcode}
+                  placeholder={t.reserve.postcodePlaceholder}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, postcode: e.target.value }))
                   }
                 />
               </div>
-              <Select
-                label="Country of residence"
-                options={[
-                  'United Kingdom',
-                  'Ireland',
-                  'United States',
-                  'Germany',
-                  'France',
-                  'Spain',
-                  'Singapore',
-                  'Hong Kong',
-                  'Australia',
-                  'Other',
-                ]}
-              />
+              <Select label={t.reserve.country} options={t.reserve.countries} />
 
               {/* Passport upload */}
               <div>
@@ -424,7 +412,7 @@ export default function ReserveModal() {
                     marginBottom: 7,
                   }}
                 >
-                  Passport / ID document (identity verification)
+                  {t.reserve.idLabel}
                 </div>
                 <label
                   style={{
@@ -451,7 +439,7 @@ export default function ReserveModal() {
                       fontWeight: passport ? 600 : 400,
                     }}
                   >
-                    {passport || 'Upload a photo or scan of your passport or ID'}
+                    {passport || t.reserve.idUpload}
                   </span>
                   <input
                     type="file"
@@ -474,7 +462,7 @@ export default function ReserveModal() {
                     marginTop: 6,
                   }}
                 >
-                  Collected before payment and shared only with the distillery for verification.
+                  {t.reserve.idNote}
                 </div>
               </div>
 
@@ -493,7 +481,7 @@ export default function ReserveModal() {
                 <Checkbox
                   label={
                     <span>
-                      I understand the 10% reservation deposit is non-refundable, because my casks are made to order, and I agree to the{' '}
+                      {t.reserve.ackDeposit1}{' '}
                       <a
                         href="/legal/terms"
                         target="_blank"
@@ -501,21 +489,15 @@ export default function ReserveModal() {
                         onClick={(e) => e.stopPropagation()}
                         style={{ color: 'var(--teal-700)', fontWeight: 500 }}
                       >
-                        terms &amp; conditions
+                        {t.reserve.ackDepositLink}
                       </a>
                       .
                     </span>
                   }
                   onChange={setAckDeposit}
                 />
-                <Checkbox
-                  label="I understand cask values can go down as well as up, and that whiskey cask investment is not regulated in the UK."
-                  onChange={setAckRisk}
-                />
-                <Checkbox
-                  label="I declare that the funds used for this purchase are from legitimate sources and are not the proceeds of crime."
-                  onChange={setAckFunds}
-                />
+                <Checkbox label={t.reserve.ackRisk} onChange={setAckRisk} />
+                <Checkbox label={t.reserve.ackFunds} onChange={setAckFunds} />
               </div>
 
               <Button
@@ -526,7 +508,7 @@ export default function ReserveModal() {
                 iconLeft={<Icon name="lock" size={17} />}
                 onClick={() => setPaid(true)}
               >
-                {`Pay ${fmtGBP(o.deposit)} deposit securely`}
+                {fmt(t.reserve.payCta, { amount: fmtGBP(o.deposit) })}
               </Button>
 
               <div
@@ -540,7 +522,7 @@ export default function ReserveModal() {
                   color: 'var(--text-subtle)',
                 }}
               >
-                <Icon name="landmark" size={14} /> Secure pay-by-bank via Trustly · Balance collected by the distillery
+                <Icon name="landmark" size={14} /> {t.reserve.trustlyNote}
               </div>
             </div>
           </div>

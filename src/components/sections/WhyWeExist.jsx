@@ -3,14 +3,16 @@ import SectionHead from '../layout/SectionHead.jsx';
 import Icon from '../primitives/Icon.jsx';
 import Card from '../primitives/Card.jsx';
 import { PROBLEMS, ANSWERS } from '../../data/index.js';
+import { useT } from '../../i18n/index.jsx';
 
 export default function WhyWeExist() {
+  const t = useT();
   return (
     <Section id="why" bg="white">
       <SectionHead
-        eyebrow="Why we exist"
-        title="Cask investing has a trust problem. We built the fix."
-        intro="The cask market is full of inflated prices, hidden fees, cold-callers and unclear ownership. Whiskey.Investments is the transparent alternative, a platform, not a sales floor."
+        eyebrow={t.why.eyebrow}
+        title={t.why.title}
+        intro={t.why.intro}
         align="center"
       />
 
@@ -42,13 +44,13 @@ export default function WhyWeExist() {
                 margin: 0,
               }}
             >
-              The cask market today
+              {t.why.marketTitle}
             </h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {PROBLEMS.map((p) => (
+            {PROBLEMS.map((p, i) => (
               <div
-                key={p.title}
+                key={p.icon}
                 style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}
               >
                 <span
@@ -75,7 +77,7 @@ export default function WhyWeExist() {
                       marginBottom: 3,
                     }}
                   >
-                    {p.title}
+                    {t.why.problems[i].title}
                   </div>
                   <div
                     style={{
@@ -85,7 +87,7 @@ export default function WhyWeExist() {
                       color: 'var(--text-muted)',
                     }}
                   >
-                    {p.body}
+                    {t.why.problems[i].body}
                   </div>
                 </div>
               </div>
@@ -113,13 +115,13 @@ export default function WhyWeExist() {
                 margin: 0,
               }}
             >
-              The Whiskey.Investments way
+              {t.why.wayTitle}
             </h3>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {ANSWERS.map((a) => (
+            {ANSWERS.map((a, i) => (
               <div
-                key={a.title}
+                key={a.icon}
                 style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}
               >
                 <span
@@ -146,7 +148,7 @@ export default function WhyWeExist() {
                       marginBottom: 3,
                     }}
                   >
-                    {a.title}
+                    {t.why.answers[i].title}
                   </div>
                   <div
                     style={{
@@ -156,7 +158,7 @@ export default function WhyWeExist() {
                       color: 'rgba(255,255,255,.68)',
                     }}
                   >
-                    {a.body}
+                    {t.why.answers[i].body}
                   </div>
                 </div>
               </div>

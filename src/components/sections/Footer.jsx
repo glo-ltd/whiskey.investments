@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import Icon from '../primitives/Icon.jsx';
 import Button from '../primitives/Button.jsx';
-import { NAV_LINKS2, LANGS2, scrollToId } from '../../data/index.js';
+import { NAV_LINKS2, scrollToId } from '../../data/index.js';
+import { useLang, LANG_OPTIONS } from '../../i18n/index.jsx';
 
 export default function Footer() {
+  const { code, t, setLang } = useLang();
   return (
     <footer style={{ background: 'var(--navy-900)', color: 'rgba(255,255,255,.7)' }}>
       <div style={{ maxWidth: 1160, margin: '0 auto', padding: '72px 24px 32px' }}>
@@ -27,7 +29,7 @@ export default function Footer() {
                 color: 'rgba(255,255,255,.62)',
               }}
             >
-              A digital reservation storefront for Great Northern Distillery whiskey casks, transparent pricing, verifiable ownership, complete investor control.
+              {t.footer.blurb}
             </p>
             <div
               style={{
@@ -47,7 +49,7 @@ export default function Footer() {
                   marginBottom: 6,
                 }}
               >
-                Not ready to reserve?
+                {t.footer.guideTitle}
               </div>
               <p
                 style={{
@@ -58,7 +60,7 @@ export default function Footer() {
                   margin: '0 0 12px',
                 }}
               >
-                Download the investment guide, everything in this page, in your inbox.
+                {t.footer.guideBody}
               </p>
               <Button
                 variant="secondary"
@@ -67,7 +69,7 @@ export default function Footer() {
                 iconLeft={<Icon name="download" size={16} />}
                 onClick={() => document.dispatchEvent(new CustomEvent('wi2-open-guide'))}
               >
-                Download the guide
+                {t.footer.guideCta}
               </Button>
             </div>
           </div>
@@ -84,7 +86,7 @@ export default function Footer() {
                 marginBottom: 18,
               }}
             >
-              Explore
+              {t.footer.explore}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {NAV_LINKS2.map((l) => (
@@ -101,7 +103,7 @@ export default function Footer() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,.66)')}
                 >
-                  {l.label}
+                  {t.nav.links[l.id] || l.label}
                 </a>
               ))}
             </div>
@@ -119,7 +121,7 @@ export default function Footer() {
                 marginBottom: 18,
               }}
             >
-              Fulfilment
+              {t.footer.fulfilment}
             </div>
             <div
               style={{
@@ -133,9 +135,9 @@ export default function Footer() {
               }}
             >
               <span>
-                Great Northern Distillery
+                {t.footer.gndAddress.split('\n')[0]}
                 <br />
-                Dundalk, Ireland
+                {t.footer.gndAddress.split('\n')[1]}
               </span>
               <a
                 href="https://gndireland.com"
@@ -166,16 +168,17 @@ export default function Footer() {
                 marginBottom: 18,
               }}
             >
-              Language
+              {t.footer.language}
             </div>
             <div style={{ position: 'relative', marginBottom: 24 }}>
               <select
                 className="wi-langselect"
-                defaultValue="English"
-                aria-label="Language"
+                value={code}
+                onChange={(e) => setLang(e.target.value)}
+                aria-label={t.footer.languageAria}
               >
-                {LANGS2.map((l) => (
-                  <option key={l}>{l}</option>
+                {LANG_OPTIONS.map((l) => (
+                  <option key={l.code} value={l.code}>{l.label}</option>
                 ))}
               </select>
               <span
@@ -253,13 +256,13 @@ export default function Footer() {
                 color: 'rgba(255,255,255,.5)',
               }}
             >
-              © 2026 GRO AI LLC.
+              {t.footer.copyright}
             </div>
             <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
               {[
-                ['Privacy', '/legal/privacy'],
-                ['Terms & conditions', '/legal/terms'],
-                ['Non-refundable deposit policy', '/legal/deposit-policy'],
+                [t.footer.legal.privacy, '/legal/privacy'],
+                [t.footer.legal.terms, '/legal/terms'],
+                [t.footer.legal.deposit, '/legal/deposit-policy'],
               ].map(([l, to]) => (
                 <Link
                   key={l}

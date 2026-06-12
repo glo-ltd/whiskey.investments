@@ -1,4 +1,7 @@
+import { useT } from '../../i18n/index.jsx';
+
 export default function ComplianceBar() {
+  const t = useT();
   return (
     <div
       style={{
@@ -11,7 +14,7 @@ export default function ComplianceBar() {
         padding: '7px 16px',
       }}
     >
-      Capital at risk. The value of whiskey casks can go down as well as up. Whiskey cask investment is not regulated in the UK.
+      {t.compliance}
     </div>
   );
 }

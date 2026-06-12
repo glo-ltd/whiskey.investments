@@ -2,21 +2,23 @@ import Section from '../layout/Section.jsx';
 import SectionHead from '../layout/SectionHead.jsx';
 import Icon from '../primitives/Icon.jsx';
 import { STEPS2 } from '../../data/index.js';
+import { useT } from '../../i18n/index.jsx';
 
 export default function HowItWorks() {
+  const t = useT();
   return (
     <Section id="how" bg="white">
       <SectionHead
-        eyebrow="How it works"
-        title="Six steps, fully self-service"
-        intro="The calculator does the persuading; the reservation does the converting. Everything after your deposit is handled directly by the distillery."
+        eyebrow={t.how.eyebrow}
+        title={t.how.title}
+        intro={t.how.intro}
         align="center"
       />
 
       <div className="wi-grid-3" style={{ marginTop: 56 }}>
         {STEPS2.map((s, i) => (
           <div
-            key={s.title}
+            key={s.icon}
             className="wi-lift"
             style={{
               background: i === 1 ? 'var(--navy-800)' : 'var(--teal-100)',
@@ -74,7 +76,7 @@ export default function HowItWorks() {
                 letterSpacing: '-0.01em',
               }}
             >
-              {s.title}
+              {t.how.steps[i].title}
             </h3>
             <p
               style={{
@@ -85,7 +87,7 @@ export default function HowItWorks() {
                 margin: 0,
               }}
             >
-              {s.body}
+              {t.how.steps[i].body}
             </p>
           </div>
         ))}

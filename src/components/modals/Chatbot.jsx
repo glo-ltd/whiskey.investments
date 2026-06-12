@@ -1,19 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import Icon from '../primitives/Icon.jsx';
 import { CHAT_CONTEXT2 } from '../../data/index.js';
+import { useLang, LANG_OPTIONS } from '../../i18n/index.jsx';
 
 export default function Chatbot() {
+  const { code, t } = useLang();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      content:
-        "Hello, I'm the Whiskey.Investments assistant. Ask me anything about reserving, owning or reselling casks.",
-    },
-  ]);
+  // The greeting is rendered virtually so it follows the selected language
+  const [messages, setMessages] = useState([]);
   const scrollRef = useRef(null);
+  const greeting = { role: 'assistant', content: t.chat.greeting };
 
   useEffect(() => {
     const h = () => setOpen(true);
@@ -31,6 +29,7 @@ export default function Chatbot() {
     const text = (typeof override === 'string' ? override : input).trim();
     if (!text || busy) return;
     const next = [...messages, { role: 'user', content: text }];
+    const convoWithGreeting = [greeting, ...next];
     setMessages(next);
     setInput('');
     setBusy(true);
@@ -39,22 +38,18 @@ export default function Chatbot() {
       if (!apiKey) {
         setMessages((m) => [
           ...m,
-          {
-            role: 'assistant',
-            content:
-              'The assistant is not configured. Please set the VITE_CLAUDE_API_KEY environment variable to enable AI responses.',
-          },
+          { role: 'assistant', content: t.chat.notConfigured },
         ]);
         setBusy(false);
         return;
       }
 
-      const convo = next.map((m) => ({ role: m.role, content: m.content }));
-      // Prepend the system context as the first user message if this is the first real exchange
+      const langLabel = (LANG_OPTIONS.find((l) => l.code === code) || LANG_OPTIONS[0]).label;
+      const langNote = code === 'en' ? '' : `\n\nIMPORTANT: The user is browsing the site in ${langLabel}. Reply in ${langLabel}.`;
       const apiMessages = [
         {
           role: 'user',
-          content: CHAT_CONTEXT2 + '\n\nConversation so far:\n' + next.map((m) => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`).join('\n') + '\n\nReply as the assistant to the last user message. Do not prefix with "Assistant:".',
+          content: CHAT_CONTEXT2 + langNote + '\n\nConversation so far:\n' + convoWithGreeting.map((m) => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`).join('\n') + '\n\nReply as the assistant to the last user message. Do not prefix with "Assistant:".',
         },
       ];
 
@@ -83,9 +78,7 @@ export default function Chatbot() {
         ...m,
         {
           role: 'assistant',
-          content:
-            reply ||
-            "Sorry, I couldn't reach the knowledge base just now. Please try again in a moment.",
+          content: reply || t.chat.emptyReply,
         },
       ]);
     } catch (e) {
@@ -93,8 +86,7 @@ export default function Chatbot() {
         ...m,
         {
           role: 'assistant',
-          content:
-            "I'm having trouble connecting right now. Please use the enquiry form in the footer and we'll be in touch.",
+          content: t.chat.connectionError,
         },
       ]);
     } finally {
@@ -102,17 +94,13 @@ export default function Chatbot() {
     }
   };
 
-  const suggestions = [
-    'Why is the deposit non-refundable?',
-    'Who collects the other 90%?',
-    'How does the crate discount work?',
-  ];
+  const suggestions = t.chat.suggestions;
 
   return (
     <>
       <button
         onClick={() => setOpen((o) => !o)}
-        aria-label="Open chat assistant"
+        aria-label={t.chat.openAria}
         style={{
           position: 'fixed',
           right: 24,
@@ -188,7 +176,7 @@ export default function Chatbot() {
                   color: '#fff',
                 }}
               >
-                Whiskey.Investments assistant
+                {t.chat.title}
               </div>
               <div
                 style={{
@@ -208,7 +196,7 @@ export default function Chatbot() {
                     background: 'var(--mint)',
                   }}
                 />
-                Online · replies instantly
+                {t.chat.online}
               </div>
             </div>
           </div>
@@ -226,7 +214,7 @@ export default function Chatbot() {
               background: 'var(--teal-100)',
             }}
           >
-            {messages.map((m, i) => (
+            {[greeting, ...messages].map((m, i) => (
               <div
                 key={i}
                 style={{
@@ -273,7 +261,7 @@ export default function Chatbot() {
               </div>
             ) : null}
 
-            {messages.length <= 1 ? (
+            {messages.length === 0 ? (
               <div
                 style={{
                   display: 'flex',
@@ -320,7 +308,7 @@ export default function Chatbot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') send(); }}
-              placeholder="Ask a question…"
+              placeholder={t.chat.placeholder}
               style={{
                 flex: 1,
                 border: '1px solid var(--line)',
@@ -335,7 +323,7 @@ export default function Chatbot() {
             <button
               onClick={() => send()}
               disabled={busy || !input.trim()}
-              aria-label="Send"
+              aria-label={t.chat.send}
               style={{
                 width: 42,
                 height: 42,

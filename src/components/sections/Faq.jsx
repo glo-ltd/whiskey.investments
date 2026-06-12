@@ -4,19 +4,21 @@ import SectionHead from '../layout/SectionHead.jsx';
 import Icon from '../primitives/Icon.jsx';
 import Button from '../primitives/Button.jsx';
 import Card from '../primitives/Card.jsx';
-import { FAQS2, scrollToId } from '../../data/index.js';
+import { scrollToId } from '../../data/index.js';
+import { useT } from '../../i18n/index.jsx';
 
 export default function Faq() {
   const [open, setOpen] = useState(0);
+  const t = useT();
 
   return (
     <Section id="faq" bg="mint">
       <div className="wi-faq-grid">
         <div>
           <SectionHead
-            eyebrow="FAQ"
-            title="Asked, answered"
-            intro="Ownership, storage, resale, risk and tax, plainly answered. Anything else, ask the assistant."
+            eyebrow={t.faq.eyebrow}
+            title={t.faq.title}
+            intro={t.faq.intro}
           />
 
           <Card variant="dark" padding="26px" style={{ marginTop: 30 }}>
@@ -29,7 +31,7 @@ export default function Faq() {
                 margin: '0 0 10px',
               }}
             >
-              Ready to reserve?
+              {t.faq.readyTitle}
             </h3>
             <p
               style={{
@@ -40,7 +42,7 @@ export default function Faq() {
                 margin: '0 0 18px',
               }}
             >
-              Pay a 10% reservation deposit today. It's non-refundable, because your casks are made to order. Great Northern Distillery collects the balance and handles everything else.
+              {t.faq.readyBody}
             </p>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <Button
@@ -49,7 +51,7 @@ export default function Faq() {
                 iconRight={<Icon name="arrow-right" size={17} />}
                 onClick={() => scrollToId('calculator')}
               >
-                Use our calculator
+                {t.faq.ctaCalculator}
               </Button>
               <Button
                 variant="secondary"
@@ -57,18 +59,18 @@ export default function Faq() {
                 iconLeft={<Icon name="message-circle" size={17} />}
                 onClick={() => document.dispatchEvent(new CustomEvent('wi-open-chat'))}
               >
-                Ask the assistant
+                {t.faq.ctaAssistant}
               </Button>
             </div>
           </Card>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          {FAQS2.map((f, i) => {
+          {t.faq.items.map((f, i) => {
             const isOpen = open === i;
             return (
               <div
-                key={f.q}
+                key={i}
                 style={{
                   background: 'var(--white)',
                   borderRadius: 'var(--radius-md)',

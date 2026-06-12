@@ -3,17 +3,12 @@ import Icon from '../primitives/Icon.jsx';
 import Button from '../primitives/Button.jsx';
 import Badge from '../primitives/Badge.jsx';
 import { priceOrder, GROWTH_RATE, fmtGBP, scrollToId } from '../../data/index.js';
+import { useT, fmt } from '../../i18n/index.jsx';
 
-const trust = [
-  { icon: 'factory', label: 'Fulfilled by Great Northern Distillery' },
-  { icon: 'badge-check', label: 'Verifiable ownership certificates' },
-  { icon: 'warehouse', label: '5-year insured bonded storage' },
-  { icon: 'hand-coins', label: 'Reserve with just a 10% deposit' },
-  { icon: 'percent', label: 'Volume discounts on larger orders' },
-  { icon: 'refresh-ccw', label: 'Distillery resale support' },
-];
+const TRUST_ICONS = ['factory', 'badge-check', 'warehouse', 'hand-coins', 'percent', 'refresh-ccw'];
 
 export default function Hero() {
+  const t = useT();
   const [crates, setCrates] = useState(5);
   const o = priceOrder(crates);
   const est8 = o.orderValue * Math.pow(1 + GROWTH_RATE, 8);
@@ -78,7 +73,7 @@ export default function Hero() {
                   color: 'var(--text-muted)',
                 }}
               >
-                The world's first dedicated whiskey investment platform
+                {t.hero.badge}
               </span>
             </div>
 
@@ -93,7 +88,7 @@ export default function Hero() {
                 margin: 0,
               }}
             >
-              The future of whiskey investing.
+              {t.hero.title}
             </h1>
 
             <p
@@ -106,7 +101,7 @@ export default function Hero() {
                 maxWidth: 520,
               }}
             >
-              Invest directly into distillery-backed Irish whiskey casks, transparent pricing, verifiable ownership and complete investor control. No brokers, no cold calls, no hidden fees.
+              {t.hero.intro}
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 32 }}>
@@ -116,7 +111,7 @@ export default function Hero() {
                 iconRight={<Icon name="arrow-right" size={18} />}
                 onClick={() => scrollToId('calculator')}
               >
-                Use our calculator
+                {t.hero.ctaCalculator}
               </Button>
               <Button
                 variant="outline"
@@ -124,7 +119,7 @@ export default function Hero() {
                 iconLeft={<Icon name="download" size={18} />}
                 onClick={() => document.dispatchEvent(new CustomEvent('wi2-open-guide'))}
               >
-                Download guide
+                {t.hero.ctaGuide}
               </Button>
             </div>
 
@@ -132,9 +127,9 @@ export default function Hero() {
               className="wi-hero-usps"
               style={{ display: 'grid', gap: '12px 24px', marginTop: 40 }}
             >
-              {trust.map((t) => (
+              {TRUST_ICONS.map((icon, i) => (
                 <div
-                  key={t.label}
+                  key={icon}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -145,8 +140,8 @@ export default function Hero() {
                     fontWeight: 500,
                   }}
                 >
-                  <Icon name={t.icon} size={18} color="var(--teal-600)" />
-                  {t.label}
+                  <Icon name={icon} size={18} color="var(--teal-600)" />
+                  {t.hero.trust[i]}
                 </div>
               ))}
             </div>
@@ -181,9 +176,9 @@ export default function Hero() {
                     color: 'var(--text-strong)',
                   }}
                 >
-                  What could your casks return?
+                  {t.hero.calcTitle}
                 </div>
-                <Badge tone="brand">AB2 Malt Cask</Badge>
+                <Badge tone="brand">{t.hero.calcBadge}</Badge>
               </div>
 
               <p
@@ -194,7 +189,7 @@ export default function Hero() {
                   margin: 0,
                 }}
               >
-                {fmtGBP(2000)} per cask, sold by the crate of six.
+                {fmt(t.hero.calcPerCask, { price: fmtGBP(2000) })}
               </p>
 
               <div
@@ -212,7 +207,7 @@ export default function Hero() {
                     color: 'var(--text-muted)',
                   }}
                 >
-                  Your order
+                  {t.hero.yourOrder}
                 </span>
                 <span
                   style={{
@@ -223,7 +218,7 @@ export default function Hero() {
                     color: 'var(--text-strong)',
                   }}
                 >
-                  {crates} crate{crates === 1 ? '' : 's'} · {o.casks} casks
+                  {crates} {crates === 1 ? t.hero.crate_one : t.hero.crate_other} · {o.casks} {t.hero.casks}
                 </span>
               </div>
 
@@ -258,7 +253,7 @@ export default function Hero() {
                       color: 'var(--text-muted)',
                     }}
                   >
-                    Order value
+                    {t.hero.orderValue}
                     {o.tier.disc
                       ? ` (${o.tier.name} −${(o.tier.disc * 100).toFixed(1).replace('.0', '')}%)`
                       : ''}
@@ -290,7 +285,7 @@ export default function Hero() {
                       color: 'var(--text-muted)',
                     }}
                   >
-                    Deposit today (10%)
+                    {t.hero.depositToday}
                   </span>
                   <span
                     style={{
@@ -323,7 +318,7 @@ export default function Hero() {
                       color: 'var(--text-muted)',
                     }}
                   >
-                    Est. value in 8 years
+                    {t.hero.estValue}
                     <span style={{ color: 'var(--text-subtle)' }}>*</span>
                   </span>
                   <span
@@ -349,7 +344,7 @@ export default function Hero() {
                   iconRight={<Icon name="arrow-down" size={17} />}
                   onClick={() => scrollToId('calculator')}
                 >
-                  Open the full calculator
+                  {t.hero.openFullCalculator}
                 </Button>
               </div>
 
@@ -363,7 +358,7 @@ export default function Hero() {
                   textAlign: 'center',
                 }}
               >
-                *Illustration based on the Knight Frank Wealth Report 2024 (whisky +280% over the 10 years to 2023, ~14.3% p.a.). Past performance is not a guide to future returns; values can go down as well as up.
+                {t.hero.disclaimer}
               </p>
             </div>
           </div>

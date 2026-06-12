@@ -3,6 +3,7 @@ import Section from '../layout/Section.jsx';
 import SectionHead from '../layout/SectionHead.jsx';
 import Icon from '../primitives/Icon.jsx';
 import { WHISKEY_STATS } from '../../data/index.js';
+import { useT } from '../../i18n/index.jsx';
 
 function HeadlineReturn() {
   const ref = useRef(null);
@@ -54,18 +55,19 @@ function HeadlineReturn() {
 }
 
 export default function WhyWhiskey() {
+  const t = useT();
   return (
     <Section id="whiskey" bg="mint">
       <SectionHead
-        eyebrow="Why whiskey"
-        title="A tangible asset with time on its side"
-        intro="Whiskey casks appreciate for structural reasons, supply is finite by law of nature, and the world keeps acquiring the taste."
+        eyebrow={t.whiskey.eyebrow}
+        title={t.whiskey.title}
+        intro={t.whiskey.intro}
       />
 
       <div className="wi-grid-4" style={{ marginTop: 48 }}>
-        {WHISKEY_STATS.map((s) => (
+        {WHISKEY_STATS.map((s, i) => (
           <div
-            key={s.value}
+            key={s.icon}
             className="wi-lift"
             style={{
               background: 'var(--white)',
@@ -85,7 +87,7 @@ export default function WhyWhiskey() {
                 margin: '16px 0 8px',
               }}
             >
-              {s.value}
+              {t.whiskey.stats[i].value}
             </div>
             <div
               style={{
@@ -95,7 +97,7 @@ export default function WhyWhiskey() {
                 color: 'var(--text-muted)',
               }}
             >
-              {s.label}
+              {t.whiskey.stats[i].label}
             </div>
           </div>
         ))}
@@ -126,7 +128,7 @@ export default function WhyWhiskey() {
               maxWidth: 420,
             }}
           >
-            Reported whisky return over the 10 years to 2023, Knight Frank Wealth Report 2024 (~14.3% p.a., approx. annualised ROI).
+            {t.whiskey.headlineNote}
           </span>
         </div>
         <span
@@ -137,7 +139,7 @@ export default function WhyWhiskey() {
             maxWidth: 320,
           }}
         >
-          Past performance is not a guide to future returns. The value of casks can go down as well as up.
+          {t.whiskey.headlineDisclaimer}
         </span>
       </div>
     </Section>

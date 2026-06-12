@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Icon from '../primitives/Icon.jsx';
 import Button from '../primitives/Button.jsx';
 import ComplianceBar from './ComplianceBar.jsx';
-import { NAV_LINKS2, LANGS2, scrollToId } from '../../data/index.js';
+import { NAV_LINKS2, scrollToId } from '../../data/index.js';
+import { useLang, LANG_OPTIONS } from '../../i18n/index.jsx';
 
 function LanguageSelector() {
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState('English');
+  const { code, t, setLang } = useLang();
+  const current = LANG_OPTIONS.find((l) => l.code === code) || LANG_OPTIONS[0];
 
   return (
     <div style={{ position: 'relative' }}>
       <button
         onClick={() => setOpen((o) => !o)}
-        aria-label="Select language"
+        aria-label={t.nav.selectLanguage}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -29,7 +30,7 @@ function LanguageSelector() {
         }}
       >
         <Icon name="globe" size={18} />
-        <span>{lang.slice(0, 2).toUpperCase()}</span>
+        <span>{current.code.toUpperCase()}</span>
         <Icon name="chevron-down" size={15} />
       </button>
       {open ? (
@@ -57,12 +58,12 @@ function LanguageSelector() {
               fontSize: 11.5,
             }}
           >
-            <Icon name="languages" size={14} /> Auto-detected · change anytime
+            <Icon name="languages" size={14} /> {t.nav.autoDetected}
           </div>
-          {LANGS2.map((l) => (
+          {LANG_OPTIONS.map((l) => (
             <button
-              key={l}
-              onClick={() => { setLang(l); setOpen(false); }}
+              key={l.code}
+              onClick={() => { setLang(l.code); setOpen(false); }}
               style={{
                 display: 'flex',
                 width: '100%',
@@ -72,15 +73,15 @@ function LanguageSelector() {
                 borderRadius: 8,
                 border: 'none',
                 cursor: 'pointer',
-                background: l === lang ? 'var(--teal-100)' : 'transparent',
-                color: l === lang ? 'var(--teal-700)' : 'var(--text-body)',
+                background: l.code === code ? 'var(--teal-100)' : 'transparent',
+                color: l.code === code ? 'var(--teal-700)' : 'var(--text-body)',
                 fontFamily: 'var(--font-body)',
                 fontSize: 14,
-                fontWeight: l === lang ? 600 : 400,
+                fontWeight: l.code === code ? 600 : 400,
               }}
             >
-              {l}
-              {l === lang ? <Icon name="check" size={16} /> : null}
+              {l.label}
+              {l.code === code ? <Icon name="check" size={16} /> : null}
             </button>
           ))}
         </div>
@@ -92,6 +93,7 @@ function LanguageSelector() {
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
+  const { t } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.pageYOffset > 24);
@@ -164,7 +166,7 @@ export default function Nav() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--teal-700)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-body)')}
               >
-                {l.label}
+                {t.nav.links[l.id] || l.label}
               </a>
             ))}
           </nav>
@@ -178,12 +180,12 @@ export default function Nav() {
               size="md"
               onClick={() => scrollToId('calculator')}
             >
-              Use our calculator
+              {t.nav.cta}
             </Button>
             <button
               className="wi-burger"
               onClick={() => setMenu((m) => !m)}
-              aria-label="Menu"
+              aria-label={t.nav.menu}
               style={{
                 display: 'none',
                 background: 'transparent',
@@ -221,7 +223,7 @@ export default function Nav() {
                   borderBottom: '1px solid var(--line)',
                 }}
               >
-                {l.label}
+                {t.nav.links[l.id] || l.label}
               </a>
             ))}
             <div style={{ paddingTop: 14 }}>
