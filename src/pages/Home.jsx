@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Whiskey.Investments | Irish Whiskey Cask Investment</title>
+        <title>Whiskey.Investments: The future of Irish Whiskey Cask Investment</title>
         <meta name="description" content="Reserve AB2 Irish Single Malt whiskey casks from Great Northern Distillery from £2,000. Second-fill, bonded and insured in Ireland. 10% deposit, distillery certificate included." />
       </Helmet>
       <Nav />
